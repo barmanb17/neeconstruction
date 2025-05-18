@@ -1,12 +1,12 @@
 'use client';
 
+import React, { type ReactElement } from "react";
 import {
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
   TwitterIcon,
 } from "lucide-react";
-import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
@@ -58,9 +58,9 @@ const socialLinks = [
   { icon: <LinkedinIcon className="w-6 h-6" />, href: "#", label: "LinkedIn" },
 ];
 
-export const Footer = (): JSX.Element => {
+export const Footer = (): ReactElement => {
   return (
-    <footer className="relative w-full overflow-hidden">
+    <footer className="relative w-full overflow-hidden pt-[140px]">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
       

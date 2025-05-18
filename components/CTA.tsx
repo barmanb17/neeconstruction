@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { type ReactElement } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,21 +23,21 @@ const newsletterData = {
   buttonText: "Subscribe Now",
 };
 
-export const CTA = (): JSX.Element => {
+export const CTA = (): ReactElement => {
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full overflow-visible -mb-[100px] z-10">
       {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-orange-50 to-gray-900" />
+      <div className="absolute inset-0 bg-transparent" />
 
       {/* Newsletter card */}
-      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-[60px]">
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <Card className="w-full bg-gradient-to-r from-orange-600 to-orange-500 rounded-[30px] border-none overflow-hidden shadow-xl">
+          <Card className="w-full bg-gradient-to-r from-orange-600 to-orange-500 rounded-[30px] border-none overflow-hidden shadow-2xl">
             <CardContent className="flex flex-col items-center gap-10 p-8 sm:p-[60px]">
               {/* Heading section */}
               <div className="flex flex-col items-center gap-4 max-w-[512px]">

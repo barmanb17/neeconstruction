@@ -1,6 +1,9 @@
+'use client';
+
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function Home() {
   return (
@@ -19,32 +22,54 @@ export default function Home() {
 
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Navigation */}
-
         {/* Hero Section */}
-        <main className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24">
-          <div className="max-w-7xl lg:px-20">
-            <h1 className="text-white text-5xl md:text-7xl font-bold mb-4">Building Excellence</h1>
-            <h2 className="text-white text-4xl md:text-6xl font-light italic mb-6" style={{ fontFamily: "serif" }}>
-              Crafting Futures
-            </h2>
-            <p className="text-white/90 text-lg max-w-xl mb-8">
-              Premium construction services for residential, commercial, and industrial projects. Excellence in every
-              detail, from foundation to finish.
-            </p>
-            <Link
-              href="#"
-              className="inline-block border border-white rounded-full px-8 py-3 text-white hover:bg-white hover:text-black transition hover:-translate-y-0.5"
-   >
-              Get Started
-            </Link>
+        <main className="flex-1 flex flex-col justify-center">
+          <div className="max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl"
+            >
+              <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">
+                Building Excellence
+              </h1>
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-6xl font-light italic mb-6" 
+                  style={{ fontFamily: "serif" }}>
+                Crafting Futures
+              </h2>
+              <p className="text-white/90 text-base sm:text-lg max-w-xl mb-8">
+                Premium construction services for residential, commercial, and industrial projects. Excellence in every
+                detail, from foundation to finish.
+              </p>
+              <Link
+                href="#"
+                className="inline-block bg-[#e3572b] rounded-full px-8 py-3 text-white hover:bg-[#d64d23] transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-orange-500/20"
+              >
+                Get Started
+              </Link>
+            </motion.div>
           </div>
         </main>
 
-        {/* Circular Element */}
-        <div className="absolute bottom-20 right-20 hidden lg:block ">
-            <img src="/Scroll down.png" alt="scrol down" />
-        </div>
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.8,
+            delay: 0.5,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="absolute bottom-12 right-8 sm:right-12 lg:right-16 hidden lg:block"
+        >
+          <img 
+            src="/Scroll down.png" 
+            alt="scroll down" 
+            className="w-24 h-auto opacity-80 hover:opacity-100 transition-opacity"
+          />
+        </motion.div>
       </div>
     </div>
   )

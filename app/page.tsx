@@ -11,6 +11,7 @@ import { Projects } from "@/components/Projects";
 import NavbarDemo from "@/components/resizable-navbar-demo";
 import { Success } from "@/components/Success";
 import { Testimonials } from "@/components/Testimonials";
+import { MobileNav } from "@/components/ui/resizable-navbar";
 import { Herr_Von_Muellerhoff } from "next/font/google";
 import Image from "next/image";
 
