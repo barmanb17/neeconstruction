@@ -3,108 +3,153 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-export const Categories = (): JSX.Element => {
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6 } }
+};
+
+const slideIn = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+export function Categories() {
   const categories = [
     {
       id: 1,
       name: "Interior design",
       icon: "/vuesax-linear-magicpen.svg",
-      position: { top: "6", left: "6" },
+      gridArea: "1 / 1 / 2 / 2"
     },
     {
       id: 2,
       name: "Commercial architect",
       icon: "/vuesax-linear-ruler-pen.svg",
-      position: { top: "6", left: "271px" },
+      gridArea: "1 / 2 / 2 / 3"
     },
     {
       id: 3,
       name: "Landscape architect",
       icon: "/vuesax-linear-color-swatch.svg",
-      position: { top: "28", left: "6" },
+      gridArea: "2 / 1 / 3 / 2"
     },
     {
       id: 4,
       name: "Luxury Homes",
-      icon: null,
-      position: { top: "200px", left: "6" },
+      icon: "/smart-home.png",
+      gridArea: "3 / 1 / 4 / 2"
     },
     {
       id: 5,
       name: "Civic project",
       icon: "/vuesax-linear-ruler.svg",
-      position: { top: "28", left: "271px" },
+      gridArea: "2 / 2 / 3 / 3"
     },
     {
       id: 6,
       name: "Urban Planning",
       icon: "/vuesax-linear-triangle.svg",
-      position: { top: "200px", left: "271px" },
+      gridArea: "3 / 2 / 4 / 3"
     },
   ];
 
   return (
-    <section className="relative w-full h-[546px] bg-[linear-gradient(0deg,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.7)_100%),url(/on.png)_50%_50%_/_cover]">
-      <div className="flex flex-col w-[287px] items-start gap-4 absolute top-[120px] left-[120px]">
-        <h2 className="self-stretch mt-[-1.00px] [font-family:'Outfit',Helvetica] font-normal text-white text-[64px] tracking-[0] leading-[normal]">
-          <span className="[font-family:'Outfit',Helvetica] font-normal text-white text-[64px] tracking-[0]">
-            Project
-          </span>
-          <span className="[font-family:'Playfair_Display',Helvetica] italic">
-            {" "}
-            Categories
-          </span>
-        </h2>
-
-        <div className="flex flex-col items-start gap-8 relative self-stretch w-full">
-          <p className="relative w-[290px] mt-[-1.00px] mr-[-3.00px] font-outfit-desktop-b4-reg font-[number:var(--outfit-desktop-b4-reg-font-weight)] text-white text-[length:var(--outfit-desktop-b4-reg-font-size)] tracking-[var(--outfit-desktop-b4-reg-letter-spacing)] leading-[var(--outfit-desktop-b4-reg-line-height)] [font-style:var(--outfit-desktop-b4-reg-font-style)]">
-            Discover diverse real estate categories, from residential to
-            industrial
-          </p>
-
-          <Button
-            variant="outline"
-            className="relative h-12 border border-solid border-[#ffffff66] rounded-[40px] px-6 py-3 bg-transparent"
+    <section className="relative w-full min-h-[546px] bg-black/70 overflow-hidden">
+      <Image
+        src="/on.png"
+        alt="Background"
+        fill
+        className="object-cover mix-blend-overlay"
+        priority
+      />
+      
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-8 py-20">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
+          {/* Left Content */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="flex flex-col gap-6 max-w-sm"
           >
-            <span className="[font-family:'Outfit',Helvetica] font-medium text-white-bg text-lg tracking-[0] leading-[normal]">
+            <h2 className={`text-4xl sm:text-5xl lg:text-[64px] text-white leading-tight`}>
+              <span className={outfit.className}>Project </span>
+              <span className={`italic ${playfair.className}`}>Categories</span>
+            </h2>
+
+            <p className={`text-base sm:text-lg text-white/80 ${outfit.className}`}>
+              Discover diverse real estate categories, from residential to
+              industrial
+            </p>
+
+            <Button
+              variant="outline"
+              className={`w-fit rounded-full border-white/40 px-8 py-3 text-white hover:bg-white hover:text-black transition-colors ${outfit.className}`}
+            >
               Our work
-            </span>
-          </Button>
+            </Button>
+          </motion.div>
+
+          {/* Right Content - Categories Card */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={slideIn}
+            className="w-full lg:w-[579px]"
+          >
+            <Card className="bg-white/10 backdrop-blur-[10px] border-none p-8 rounded-3xl">
+              <div className="grid grid-cols-2 gap-8">
+                {categories.map((category) => (
+                  <motion.div
+                    key={category.id}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3"
+                    style={{ gridArea: category.gridArea }}
+                  >
+                    <div className="relative flex w-12 h-12 items-center justify-center">
+                      <Image
+                        src="/star-2.svg"
+                        alt="Star background"
+                        width={47}
+                        height={46}
+                        className="absolute"
+                      />
+                      <Image
+                        src={category.icon}
+                        alt={`${category.name} icon`}
+                        width={16}
+                        height={16}
+                        className="relative z-10"
+                      />
+                    </div>
+
+                    <span className={`text-base text-white ${outfit.className}`}>
+                      {category.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
         </div>
       </div>
-
-      <Card className="absolute w-[579px] h-[272px] top-[137px] left-[741px] bg-[#ffffff1a] rounded-3xl overflow-hidden backdrop-blur-[10px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(10px)_brightness(100%)] border-none">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className="inline-flex items-center gap-3 absolute"
-            style={{ top: category.position.top, left: category.position.left }}
-          >
-            <div className="flex w-12 h-12 items-center gap-2.5 p-4 relative">
-              <img
-                className="absolute w-[47px] h-[46px] top-px left-px"
-                alt="Star"
-                src="/star-2.svg"
-              />
-
-              {category.icon ? (
-                <img
-                  className="relative w-4 h-4"
-                  alt={`${category.name} icon`}
-                  src={category.icon}
-                />
-              ) : (
-                <div className="relative w-4 h-4 bg-[url(/smart-home.png)] bg-[100%_100%]" />
-              )}
-            </div>
-
-            <div className="relative w-fit font-outfit-desktop-b3-reg font-[number:var(--outfit-desktop-b3-reg-font-weight)] text-white text-[length:var(--outfit-desktop-b3-reg-font-size)] tracking-[var(--outfit-desktop-b3-reg-letter-spacing)] leading-[var(--outfit-desktop-b3-reg-line-height)] [font-style:var(--outfit-desktop-b3-reg-font-style)]">
-              {category.name}
-            </div>
-          </div>
-        ))}
-      </Card>
     </section>
   );
-};
+}

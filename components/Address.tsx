@@ -1,101 +1,276 @@
 'use client';
 
-import { StarIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, StarIcon } from "lucide-react";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const locationCardVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 // Location data for mapping
 const locations = [
   {
     id: 1,
-    name: "Santa Ana",
-    address: "123 Tenth Avenue, Manhattan, New York, NY 10003, USA, 456743",
-    imageUrl: "..//image.png",
-    position: { top: 0, left: "196px" },
+    name: "Santa Ana Office",
+    address: "123 Tenth Avenue, Manhattan",
+    fullAddress: "New York, NY 10003, USA",
+    phone: "+1 (555) 123-4567",
+    imageUrl: "/image.png",
+    position: { top: "15%", left: "20%" }
   },
   {
     id: 2,
     name: "Preston Rd. Inglewood",
-    address: "111 North Bridge Road Peninsula Plaza Singapore 179098",
-    imageUrl: "..//image-1.png",
-    position: { top: "150px", left: "932px" },
+    address: "111 North Bridge Road",
+    fullAddress: "Peninsula Plaza Singapore 179098",
+    phone: "+65 6789 0123",
+    imageUrl: "/image-1.png",
+    position: { top: "45%", left: "65%" }
   },
+];
+
+const contactInfo = [
+  {
+    id: 1,
+    icon: <PhoneIcon className="w-5 h-5" />,
+    title: "Phone Number",
+    value: "+1 (555) 123-4567",
+    link: "tel:+15551234567"
+  },
+  {
+    id: 2,
+    icon: <MapPinIcon className="w-5 h-5" />,
+    title: "Main Office",
+    value: "123 Business Avenue, Suite 100",
+    link: "https://maps.google.com"
+  }
 ];
 
 export const Address = (): JSX.Element => {
   return (
-    <section className="relative w-full bg-[#fff9f4] overflow-hidden py-[50px]">
-      <div className="flex flex-col max-w-[1120px] mx-auto items-center justify-center gap-20">
+    <section className="relative w-full bg-gradient-to-b from-orange-50 to-white overflow-hidden py-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         {/* Header Section */}
-        <div className="flex flex-col gap-3 items-center">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="flex flex-col gap-6 items-center mb-20"
+        >
           <Badge
             variant="outline"
-            className="pl-1.5 pr-[18px] py-2 bg-primarywhite rounded-[100px] flex items-center backdrop-blur-[30px]"
+            className="pl-1.5 pr-[18px] py-2 bg-white rounded-full flex items-center backdrop-blur-[30px] border-orange-200"
           >
-            <div className="relative w-10 h-10 bg-primarywhite rounded-[100px] flex items-center justify-center mr-2">
-              <StarIcon className="w-[17px] h-[17px]" />
+            <div className="relative w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center mr-2">
+              <StarIcon className="w-[17px] h-[17px] text-orange-500" />
             </div>
-            <span className="font-heading-body-medium-16-medium text-primaryblack">
-              Office
+            <span className={`text-gray-900 font-medium ${outfit.className}`}>
+              Our Offices
             </span>
           </Badge>
 
-          <div className="flex flex-col gap-1.5 items-center">
-            <h1 className="font-heading-h1-64-medium text-primaryblack text-center">
-              Come and Visit us!
+          <div className="flex flex-col gap-4 items-center">
+            <h1 className="text-center">
+              <span className={`text-4xl sm:text-5xl lg:text-6xl text-gray-900 font-medium ${outfit.className}`}>
+                Come and 
+              </span>
+              <span className={`text-4xl sm:text-5xl lg:text-6xl text-orange-500 italic ml-2 ${playfair.className}`}>
+                Visit us!
+              </span>
             </h1>
+            <p className={`text-base sm:text-lg text-gray-600 text-center max-w-2xl ${outfit.className}`}>
+              Reach out anytime! Whether it&apos;s a question, a suggestion, or
+              just to say hi, we&apos;re always here to help
+            </p>
           </div>
 
-          <p className="font-heading-body-large-20-regular text-primarygrey-600 text-center">
-            Reach out anytime! Whether it&apos;s a question, a suggestion, or
-            just to say hi, we&apos;re always here to help
-          </p>
-        </div>
-      </div>
-
-      {/* Map Section */}
-      <div className="relative w-full mt-[80px]">
-        {/* Vector/Map Background */}
-        <img
-          className="w-full max-w-[1592px] h-[581px] mx-auto relative"
-          alt="Vector"
-          src="/vector-13.svg"
-        />
-
-        {/* Location Cards */}
-        {locations.map((location) => (
-          <Card
-            key={location.id}
-            className="flex flex-col w-[424px] items-start gap-2.5 p-6 absolute bg-primaryblack rounded-[32px]"
-            style={{ top: location.position.top, left: location.position.left }}
+          {/* Contact Info Cards */}
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mt-8"
           >
-            <CardContent className="p-0">
-              <div className="flex gap-4 items-center w-full">
-                <div
-                  className="relative w-[102px] h-[102px] rounded-[18px]"
-                  style={{
-                    background: `url(${location.imageUrl}) 50% 50% / cover`,
+            {contactInfo.map((info) => (
+              <motion.a
+                key={info.id}
+                href={info.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={fadeIn}
+                whileHover={{ scale: 1.02 }}
+                className="group"
+              >
+                <Card className="bg-white border-orange-100 hover:border-orange-200 transition-colors">
+                  <CardContent className="flex items-center gap-4 p-6">
+                    <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-orange-500 group-hover:bg-orange-100 transition-colors">
+                      {info.icon}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className={`text-sm text-gray-500 ${outfit.className}`}>
+                        {info.title}
+                      </span>
+                      <span className={`text-base font-medium text-gray-900 ${outfit.className}`}>
+                        {info.value}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Map Section */}
+        <div className="relative w-full">
+          {/* Vector/Map Background */}
+          <div className="relative w-full aspect-[16/9] max-h-[581px] mx-auto">
+            <Image
+              src="/vector-13.svg"
+              alt="World Map"
+              fill
+              className="object-contain"
+              priority
+            />
+
+            {/* Location Cards - Desktop */}
+            <div className="hidden md:block absolute inset-0">
+              {locations.map((location) => (
+                <motion.div
+                  key={location.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={locationCardVariants}
+                  className="absolute"
+                  style={{ 
+                    top: location.position.top, 
+                    left: location.position.left,
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 10 
                   }}
-                />
+                >
+                  <Card className="w-[320px] lg:w-[380px] bg-gray-900 rounded-[32px] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    <CardContent className="p-4 lg:p-6">
+                      <div className="flex gap-4 items-start w-full">
+                        <div className="relative w-[80px] h-[80px] lg:w-[102px] lg:h-[102px] rounded-[18px] overflow-hidden flex-shrink-0">
+                          <Image
+                            src={location.imageUrl}
+                            alt={location.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
 
-                <div className="flex flex-col w-[266px] items-start gap-2">
-                  <h2 className="font-medium text-white text-2xl font-['Outfit',Helvetica] tracking-[0] leading-normal">
-                    {location.name}
-                  </h2>
+                        <div className="flex flex-col gap-3">
+                          <h2 className={`font-medium text-white text-xl lg:text-2xl ${outfit.className}`}>
+                            {location.name}
+                          </h2>
 
-                  <p className="font-heading-body-medium-16-medium text-primarygrey-500">
-                    {location.address}
-                  </p>
-                </div>
-              </div>
+                          <div className="space-y-1">
+                            <p className={`text-gray-300 text-sm ${outfit.className}`}>
+                              {location.address}
+                            </p>
+                            <p className={`text-gray-400 text-sm ${outfit.className}`}>
+                              {location.fullAddress}
+                            </p>
+                            <p className={`text-orange-400 text-sm ${outfit.className}`}>
+                              {location.phone}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
 
-              <div className="relative w-[51px] h-[51px] mt-[8px] mx-auto">
-                <div className="relative w-9 h-9 top-[7px] left-[7px] bg-primaryblack rounded-[10px] rotate-[46.93deg]" />
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+                      <div className="relative w-[51px] h-[51px] mt-2 mx-auto">
+                        <div className="absolute w-9 h-9 top-[7px] left-[7px] bg-gray-900 rounded-[10px] rotate-[46.93deg]" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile View - Stacked Cards */}
+          <div className="md:hidden mt-8 space-y-4">
+            {locations.map((location) => (
+              <motion.div
+                key={location.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="w-full bg-gray-900 rounded-[32px] hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-6">
+                    <div className="flex gap-4 items-start">
+                      <div className="relative w-[80px] h-[80px] rounded-[18px] overflow-hidden flex-shrink-0">
+                        <Image
+                          src={location.imageUrl}
+                          alt={location.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-2">
+                        <h2 className={`font-medium text-white text-xl ${outfit.className}`}>
+                          {location.name}
+                        </h2>
+
+                        <div className="space-y-1">
+                          <p className={`text-gray-300 text-sm ${outfit.className}`}>
+                            {location.address}
+                          </p>
+                          <p className={`text-gray-400 text-sm ${outfit.className}`}>
+                            {location.fullAddress}
+                          </p>
+                          <p className={`text-orange-400 text-sm ${outfit.className}`}>
+                            {location.phone}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

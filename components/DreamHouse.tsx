@@ -4,88 +4,134 @@ import { CalendarIcon, ClipboardCheckIcon, FileTextIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+// Steps data for mapping
+const steps = [
+  {
+    id: 1,
+    title: "Step 1 : Define Your Priorities",
+    icon: <ClipboardCheckIcon className="relative w-4 h-4" />,
+  },
+  {
+    id: 2,
+    title: "Step 2 : Explore Listings",
+    icon: <FileTextIcon className="relative w-4 h-4" />,
+  },
+  {
+    id: 3,
+    title: "Step 3 : Schedule Viewings",
+    icon: <CalendarIcon className="relative w-4 h-4" />,
+  },
+];
 
 export const DreamHouse = (): JSX.Element => {
-  // Steps data for mapping
-  const steps = [
-    {
-      id: 1,
-      title: "Step 1 : Define Your Priorities",
-      icon: <ClipboardCheckIcon className="relative w-4 h-4" />,
-    },
-    {
-      id: 2,
-      title: "Step 2 : Explore Listings",
-      icon: <FileTextIcon className="relative w-4 h-4" />,
-    },
-    {
-      id: 3,
-      title: "Step 3 : Schedule Viewings",
-      icon: <CalendarIcon className="relative w-4 h-4" />,
-    },
-  ];
-
   return (
-    <section className="w-full h-[673px] bg-orage-light-bg overflow-hidden relative">
-      <div className="max-w-[1200px] mx-auto h-[433px] py-[120px] relative">
-        <div className="flex flex-col w-[498px] items-start gap-10">
-          <div className="flex flex-col items-start justify-center gap-4 relative self-stretch w-full">
-            <h1 className="text-[64px] leading-[normal] tracking-[0]">
-              <span className="font-outfit-desktop-h1 font-normal text-black">
-                Your dream{" "}
-              </span>
-              <span className="[font-family:'Playfair_Display',Helvetica] italic">
-                house
-              </span>
+    <section className="w-full min-h-[673px] bg-orage-light-bg overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="flex flex-col w-full lg:w-[498px] items-start gap-10"
+        >
+          <div className="flex flex-col items-start justify-center gap-4 relative w-full">
+            <h1 className="text-4xl sm:text-5xl lg:text-[64px] leading-tight">
+              <span className={outfit.className}>Your dream </span>
+              <span className={`${playfair.className} italic`}>house</span>
             </h1>
 
-            <p className="font-outfit-desktop-b3-reg text-black-60">
+            <p className={`text-lg text-black/60 ${outfit.className}`}>
               Discover your dream house, a perfect blend of comfort and
               elegance, where every detail is designed for your vision
             </p>
           </div>
 
-          <div className="flex flex-col w-[296px] items-start gap-4">
-            {steps.map((step) => (
-              <div key={step.id} className="flex items-center gap-4">
-                <div className="flex w-12 h-12 items-center justify-center gap-2.5 p-4 relative">
-                  <img
-                    className="absolute w-[47px] h-[46px] top-px left-px"
-                    alt="Star"
+          <div className="flex flex-col gap-6">
+            {steps.map((step, index) => (
+              <motion.div 
+                key={step.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4"
+              >
+                <div className="relative flex w-12 h-12 items-center justify-center">
+                  <Image
                     src="/star-2.svg"
+                    alt="Star"
+                    width={47}
+                    height={46}
+                    className="absolute"
                   />
-                  {step.icon}
+                  <div className="relative z-10 text-orange">
+                    {step.icon}
+                  </div>
                 </div>
-                <div className="font-outfit-desktop-b3-reg text-black">
+                <span className={`text-lg text-black ${outfit.className}`}>
                   {step.title}
-                </div>
-              </div>
+                </span>
+              </motion.div>
             ))}
           </div>
 
           <Button
             variant="outline"
-            className="h-12 px-6 py-3 rounded-[40px] border border-solid border-orange hover:bg-orange/10"
+            className={`h-12 px-8 py-3 rounded-full border-orange text-orange hover:bg-orange/10 ${outfit.className}`}
           >
-            <span className="font-medium text-orange text-lg">Get started</span>
+            Get started
           </Button>
-        </div>
+        </motion.div>
 
-        <Card className="absolute w-[582px] h-[433px] top-0 left-[618px] rounded-xl overflow-hidden border-none">
-          <div className="w-full h-full bg-[url(/picture-6.png)] bg-cover bg-center" />
-        </Card>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative w-full lg:w-[582px] h-[433px]"
+        >
+          <Card className="w-full h-full overflow-hidden border-none rounded-xl">
+            <Image
+              src="/picture-6.png"
+              alt="Dream House"
+              fill
+              className="object-cover"
+              priority
+            />
+          </Card>
+        </motion.div>
       </div>
 
-      <img
-        className="absolute w-[34px] h-11 top-[267px] left-[-13px]"
-        alt="Vector"
+      <Image
         src="/vector-787.svg"
+        alt="Vector"
+        width={34}
+        height={44}
+        className="absolute top-[267px] left-[-13px]"
       />
 
-      <img
-        className="absolute w-[41px] h-[30px] top-[594px] left-[1408px]"
-        alt="Vector"
+      <Image
         src="/vector-792.svg"
+        alt="Vector"
+        width={41}
+        height={30}
+        className="absolute top-[594px] right-0"
       />
     </section>
   );

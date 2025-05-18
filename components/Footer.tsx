@@ -8,6 +8,31 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 // Define data for footer sections to make the code more maintainable
 const companyLinks = [
@@ -35,108 +60,123 @@ const socialLinks = [
 
 export const Footer = (): JSX.Element => {
   return (
-    <footer className="flex flex-col w-full items-start gap-2.5 p-[120px] bg-dark-bg">
-      <div className="flex flex-col items-start gap-10 w-full">
-        <div className="flex flex-wrap items-start justify-between gap-8 w-full">
-          {/* Logo and description */}
-          <div className="flex flex-col items-start gap-4 max-w-[354px]">
-            <div className="inline-flex items-center gap-1">
-              <img
-                className="w-[30px] h-[30px]"
-                alt="Galaxy"
-                src="/galaxy.svg"
-              />
-              <div className="inline-flex items-center gap-2">
-                <div className="[font-family:'Playfair_Display',Helvetica] font-normal italic text-white text-2xl">
-                  Skyline
-                </div>
-              </div>
-            </div>
+    <footer className="relative w-full overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
+      
+      {/* Decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_500px_at_50%_200px,#fb923c,transparent)]" />
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
+      </div>
 
-            <div className="flex flex-col items-start gap-4 w-full">
-              <p className="font-outfit-desktop-b3-reg text-white-60">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-20">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col gap-10"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Logo and description */}
+            <motion.div 
+              variants={fadeIn}
+              className="flex flex-col gap-6"
+            >
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/galaxy.svg"
+                  alt="Galaxy"
+                  width={30}
+                  height={30}
+                  className="opacity-90"
+                />
+                <span className={`text-2xl text-white italic ${playfair.className}`}>
+                  Skyline
+                </span>
+              </div>
+
+              <p className={`text-gray-400 ${outfit.className}`}>
                 A breathtaking skyline, where towering skyscrapers meet the
                 horizon, epitomizes urban grandeur.
               </p>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Navigation links */}
-          <div className="flex flex-wrap items-start gap-[100px]">
             {/* Company links */}
-            <div className="flex flex-col items-start gap-1.5 min-w-[124px]">
-              <div className="flex flex-col items-start gap-6 w-full">
-                <h3 className="font-outfit-desktop-b3-semi-b text-white-bg">
-                  COMPANY
-                </h3>
+            <motion.div variants={fadeIn} className="flex flex-col gap-6">
+              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
+                COMPANY
+              </h3>
 
-                <nav className="flex flex-col items-start gap-1.5 w-full">
-                  {companyLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      className="font-outfit-desktop-b3-reg text-white-60 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </nav>
-              </div>
-            </div>
+              <nav className="flex flex-col gap-4">
+                {companyLinks.map((link, index) => (
+                  <motion.a
+                    key={index}
+                    href={link.href}
+                    whileHover={{ x: 5 }}
+                    className={`text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
 
             {/* Support links */}
-            <div className="flex flex-col items-start gap-6 min-w-[124px]">
-              <h3 className="font-outfit-desktop-b3-semi-b text-white-bg">
+            <motion.div variants={fadeIn} className="flex flex-col gap-6">
+              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
                 SUPPORT
               </h3>
 
-              <nav className="flex flex-col items-start gap-1.5 w-full">
+              <nav className="flex flex-col gap-4">
                 {supportLinks.map((link, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href={link.href}
-                    className="font-outfit-desktop-b3-reg text-white-60 hover:text-white transition-colors"
+                    whileHover={{ x: 5 }}
+                    className={`text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
                   >
                     {link.label}
-                  </a>
+                  </motion.a>
                 ))}
               </nav>
-            </div>
+            </motion.div>
 
             {/* Social links */}
-            <div className="flex flex-col items-start gap-6">
-              <h3 className="font-outfit-desktop-b3-semi-b text-white-bg">
+            <motion.div variants={fadeIn} className="flex flex-col gap-6">
+              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
                 SOCIAL
               </h3>
 
-              <div className="flex items-center gap-6">
+              <div className="flex gap-6">
                 {socialLinks.map((link, index) => (
-                  <a
+                  <motion.a
                     key={index}
                     href={link.href}
+                    whileHover={{ y: -5 }}
                     aria-label={link.label}
-                    className="text-white-60 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     {link.icon}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
 
-        <Separator className="bg-white-10 h-px w-full" />
+          <Separator className="bg-gray-800" />
 
-        {/* Footer bottom */}
-        <div className="flex flex-wrap items-center justify-between w-full gap-4">
-          <p className="font-outfit-desktop-b3-reg text-white-60">
-            © Skyline Inc. All Rights Reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
+            <p className={`text-gray-500 ${outfit.className}`}>
+              © Skyline Inc. All Rights Reserved.
+            </p>
 
-          <p className="font-outfit-desktop-b3-reg text-white-60">
-            Privacy Policy.Terms and condition
-          </p>
-        </div>
+            <p className={`text-gray-500 ${outfit.className}`}>
+              Privacy Policy • Terms and condition
+            </p>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

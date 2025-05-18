@@ -4,6 +4,43 @@ import { ArrowUpRightIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const scaleUp = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15
+    }
+  }
+};
 
 // Property data for mapping
 const properties = [
@@ -37,105 +74,158 @@ const categories = [
   { id: 3, name: "Apartments", active: false },
 ];
 
-export const Projects = (): JSX.Element => {
+export function Projects() {
   return (
-    <section className="py-20 px-4 bg-[#fff4ea] w-full">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full bg-[#fff4ea] py-20">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
         {/* Header section */}
-        <div className="flex flex-col md:flex-row justify-between items-start mb-16">
-          <div className="flex items-center mb-6 md:mb-0">
-            <h2 className="text-[64px] tracking-[0]">
-              <span className="font-normal [font-family:'Outfit',Helvetica]">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="mb-16 flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+        >
+          <motion.div 
+            variants={fadeInUp}
+            className="flex items-center px-4 sm:px-0"
+          >
+            <h2 className="flex items-center gap-4">
+              <span className={`text-4xl sm:text-5xl lg:text-[64px] tracking-tight ${outfit.className}`}>
                 Latest
               </span>
-              <span className="[font-family:'Playfair_Display',Helvetica]">
-                &nbsp;
-              </span>
-              <span className="[font-family:'Playfair_Display',Helvetica] italic">
+              <span className={`italic text-4xl sm:text-5xl lg:text-[64px] ${playfair.className}`}>
                 Project
               </span>
+              <motion.img
+                initial={{ rotate: -20, scale: 0.8 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                className="ml-2 h-[40px] w-[34px] sm:h-[60px] sm:w-[52px]"
+                alt="Star"
+                src="/star-1.svg"
+              />
             </h2>
-            <img
-              className="w-[52px] h-[60px] ml-4"
-              alt="Star"
-              src="/star-1.svg"
-            />
-          </div>
-          <p className="max-w-[563px] font-outfit-desktop-b3-reg text-black-60">
+          </motion.div>
+          <motion.p 
+            variants={fadeInUp}
+            className={`max-w-xl text-base text-black/60 lg:text-lg px-4 sm:px-0 ${outfit.className}`}
+          >
             We offer the latest property listings with detailed insights,
             virtual tours, and personalized assistance, ensuring a seamless and
             efficient real estate experience
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Category filters */}
-        <div className="flex flex-wrap items-center gap-4 mb-12">
-          {categories.map((category) => (
-            <Button
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="mb-12 flex flex-wrap items-center gap-3 px-4 sm:px-0"
+        >
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              variant={category.active ? "default" : "outline"}
-              className={`rounded-[40px] px-6 py-3 text-lg font-medium ${
-                category.active
-                  ? "bg-[#e3572b] text-white border-[#e3572b]"
-                  : "text-black border-[#00000033]"
-              }`}
+              variants={scaleUp}
+              custom={index}
             >
-              {category.name}
-            </Button>
+              <Button
+                variant={category.active ? "default" : "outline"}
+                className={`rounded-full px-6 py-3 text-base font-medium transition-colors ${outfit.className} ${
+                  category.active
+                    ? "bg-[#e3572b] text-white hover:bg-[#d14d24]"
+                    : "text-black hover:bg-black/5"
+                }`}
+              >
+                {category.name}
+              </Button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Property cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[60px] mb-16">
-          {properties.map((property) => (
-            <Card
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="mb-16 grid grid-cols-1 gap-8 px-4 sm:px-0 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {properties.map((property, index) => (
+            <motion.div
               key={property.id}
-              className="border-none shadow-none bg-transparent"
+              variants={scaleUp}
+              custom={index}
             >
-              <CardContent className="p-0 flex flex-col gap-6">
-                {/* Property image */}
-                <div
-                  className="w-full h-[280px] rounded-xl bg-cover bg-center"
-                  style={{ backgroundImage: `url(${property.image})` }}
-                />
+              <Card className="border-none bg-transparent shadow-none transition-transform hover:-translate-y-1">
+                <CardContent className="flex flex-col gap-6 p-0">
+                  {/* Property image */}
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="h-[280px] w-full overflow-hidden rounded-xl bg-cover bg-center"
+                    style={{ backgroundImage: `url(${property.image})` }}
+                  />
 
-                {/* Property details */}
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-outfit-desktop-b3-semi-b text-black">
-                    {property.name}
-                  </h3>
-                  <p className="font-outfit-desktop-b4-reg text-black-60">
-                    {property.location}
-                  </p>
-                </div>
-
-                {/* Price and details link */}
-                <div className="flex items-center justify-between">
-                  <span className="font-outfit-desktop-b1 text-orange">
-                    {property.price}
-                  </span>
-                  <div className="flex items-center gap-3 cursor-pointer">
-                    <span className="font-outfit-desktop-b3-reg text-black">
-                      Details
-                    </span>
-                    <ArrowUpRightIcon className="w-4 h-4" />
+                  {/* Property details */}
+                  <div className="flex flex-col gap-2">
+                    <h3 className={`text-lg font-semibold text-black lg:text-xl ${outfit.className}`}>
+                      {property.name}
+                    </h3>
+                    <p className={`text-base text-black/60 ${outfit.className}`}>
+                      {property.location}
+                    </p>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+
+                  {/* Price and details link */}
+                  <div className="flex items-center justify-between">
+                    <span className={`text-xl font-semibold text-[#e3572b] lg:text-2xl ${outfit.className}`}>
+                      {property.price}
+                    </span>
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      className={`group flex items-center gap-2 ${outfit.className}`}
+                    >
+                      <span className="text-base font-medium text-black transition-colors group-hover:text-[#e3572b]">
+                        Details
+                      </span>
+                      <motion.div
+                        whileHover={{ x: 3, y: -3 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                      >
+                        <ArrowUpRightIcon className="h-5 w-5" />
+                      </motion.div>
+                    </motion.button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View all projects button */}
-        <div className="flex justify-center">
-          <Button
-            variant="outline"
-            className="rounded-[40px] border-[#e3572b] text-[#e3572b] font-medium text-lg px-6 py-3"
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="flex justify-center px-4 sm:px-0"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            View all projects
-          </Button>
-        </div>
+            <Button
+              variant="outline"
+              className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
+            >
+              View all projects
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
-};
+}

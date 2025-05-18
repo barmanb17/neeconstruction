@@ -2,9 +2,32 @@
 
 import { StarIcon } from "lucide-react";
 import React from "react";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Outfit, Playfair_Display } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const outfit = Outfit({ subsets: ["latin"] });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    scale: 1,
+    transition: { duration: 0.5 }
+  }
+};
 
 // Testimonial data for mapping
 const testimonials = [
@@ -15,7 +38,7 @@ const testimonials = [
     rating: "5/5",
     image: "/picture-7.png",
     title: "Unmatched Quality",
-    text: "From consultation to closing, they provided exceptional service and guidance",
+    text: "From consultation to closing, they provided exceptional service and guidance throughout the entire process. Their attention to detail and professionalism made our dream home a reality.",
     avatar: "/ellipse-109.png",
   },
   {
@@ -25,7 +48,7 @@ const testimonials = [
     rating: "5/5",
     image: "/picture-8.png",
     title: "Outstanding Experience",
-    text: "The team made the home-buying process seamless and stress-free for us",
+    text: "The team made the home-buying process seamless and stress-free for us. Their expertise and dedication to customer satisfaction truly sets them apart in the industry.",
     avatar: "/ellipse-109-1.png",
   },
   {
@@ -35,102 +58,137 @@ const testimonials = [
     rating: "5/5",
     image: "/picture-9.png",
     title: "Exceptional Service",
-    text: "Their expertise in real estate helped us find the perfect home with best quality possible",
+    text: "Their expertise in real estate helped us find the perfect home with the best quality possible. The entire team was professional, responsive, and a pleasure to work with.",
     avatar: "/ellipse-109-2.png",
   },
 ];
 
 export const Testimonials = (): JSX.Element => {
   return (
-    <section className="flex flex-col items-start gap-2.5 py-[120px] relative w-full">
-      <div className="flex flex-col items-center gap-[60px] relative w-full">
-        {/* Header Section */}
-        <div className="flex flex-col items-center gap-4 max-w-[760px]">
-          <div className="flex items-center gap-10 w-full justify-center">
-            <img className="w-[52px] h-[60px]" alt="Star" src="/star-1.svg" />
+    <section className="w-full py-20 bg-gradient-to-b from-white to-orange-50/30">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col items-center gap-[60px]"
+        >
+          {/* Header Section */}
+          <motion.div 
+            variants={fadeIn}
+            className="flex flex-col items-center gap-4 max-w-[760px]"
+          >
+            <div className="flex items-center gap-6 sm:gap-10 w-full justify-center">
+              <img 
+                className="w-[40px] sm:w-[52px] h-[46px] sm:h-[60px] opacity-80" 
+                alt="Star" 
+                src="/star-1.svg" 
+              />
 
-            <h2 className="text-[64px] text-center leading-[64px] font-normal">
-              <span className="font-['Outfit',Helvetica]"> Our</span>
-              <span className="font-semibold">&nbsp;</span>
-              <span className="font-['Playfair_Display',Helvetica] italic">
-                Testimonials
-              </span>
-            </h2>
+              <h2 className="text-center">
+                <span className={`text-3xl sm:text-4xl lg:text-[64px] leading-tight font-normal ${outfit.className}`}>
+                  Our
+                </span>
+                <span className={`text-3xl sm:text-4xl lg:text-[64px] leading-tight italic ml-2 ${playfair.className}`}>
+                  Testimonials
+                </span>
+              </h2>
 
-            <img className="w-[52px] h-[60px]" alt="Star" src="/star-1.svg" />
-          </div>
+              <img 
+                className="w-[40px] sm:w-[52px] h-[46px] sm:h-[60px] opacity-80" 
+                alt="Star" 
+                src="/star-1.svg" 
+              />
+            </div>
 
-          <p className="max-w-[515px] font-['Outfit',Helvetica] font-normal text-black-60 text-lg text-center">
-            See how we've turned clients' real estate dreams into reality with
-            exceptional service
-          </p>
-        </div>
+            <p className={`text-base sm:text-lg text-gray-600 text-center max-w-[515px] ${outfit.className}`}>
+              See how we've turned clients' real estate dreams into reality with
+              exceptional service
+            </p>
+          </motion.div>
 
-        <div className="flex flex-col items-center gap-[60px] w-full">
           {/* Testimonial Cards */}
-          <div className="flex items-center justify-center gap-10 w-full overflow-x-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
             {testimonials.map((testimonial, index) => (
-              <Card
+              <motion.div
                 key={testimonial.id}
-                className={`flex flex-col w-[584px] rounded-xl border border-solid border-[#dbdbdb] overflow-hidden`}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={index}
               >
-                <CardContent className="flex flex-col gap-6 p-10">
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-6">
-                      <Avatar className="w-16 h-16">
-                        <AvatarImage
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                        />
-                      </Avatar>
+                <Card className="h-full bg-white hover:shadow-xl transition-shadow duration-300 rounded-xl border border-gray-100">
+                  <CardContent className="flex flex-col gap-6 p-6 sm:p-8">
+                    {/* User Info */}
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center gap-4">
+                        <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                          <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
 
-                      <div className="flex flex-col gap-2">
-                        <h3 className="font-outfit-desktop-b3-semi-b text-black">
-                          {testimonial.name}
-                        </h3>
-                        <p className="font-body-b2-reg text-black-60">
-                          {testimonial.position}
-                        </p>
+                        <div className="flex flex-col">
+                          <h3 className={`text-lg font-medium text-gray-900 ${outfit.className}`}>
+                            {testimonial.name}
+                          </h3>
+                          <p className={`text-sm text-gray-500 ${outfit.className}`}>
+                            {testimonial.position}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <StarIcon className="w-5 h-5 text-orange-500" fill="currentColor" />
+                        <span className={`text-sm font-medium text-orange-500 ${outfit.className}`}>
+                          {testimonial.rating}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="flex items-end gap-3">
-                      <StarIcon
-                        className="w-6 h-6 text-orange"
-                        fill="currentColor"
+                    {/* Property Image */}
+                    <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+                      <Image
+                        src={testimonial.image}
+                        alt="Property"
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
                       />
-                      <span className="font-body-b1-reg text-orange">
-                        {testimonial.rating}
-                      </span>
                     </div>
-                  </div>
 
-                  <div
-                    className="w-full h-[200px] rounded-xl bg-cover bg-center"
-                    style={{ backgroundImage: `url(${testimonial.image})` }}
-                  />
-
-                  <div className="flex flex-col gap-4">
-                    <h4 className="font-outfit-desktop-b3-semi-b text-black">
-                      {testimonial.title}
-                    </h4>
-                    <p className="font-outfit-desktop-b3-reg text-black-60">
-                      {testimonial.text}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+                    {/* Review Content */}
+                    <div className="flex flex-col gap-2">
+                      <h4 className={`text-xl font-medium text-gray-900 ${outfit.className}`}>
+                        {testimonial.title}
+                      </h4>
+                      <p className={`text-base text-gray-600 line-clamp-3 ${outfit.className}`}>
+                        {testimonial.text}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
           {/* View All Button */}
-          <Button
-            variant="outline"
-            className="border border-solid border-orange text-orange rounded-[40px] h-12 px-6"
-          >
-            View all
-          </Button>
-        </div>
+          <motion.div variants={fadeIn}>
+            <Button
+              variant="outline"
+              className={`
+                px-8 py-3 rounded-full border-orange-500 text-orange-500 
+                hover:bg-orange-50 hover:text-orange-600 transition-colors
+                ${outfit.className}
+              `}
+            >
+              View all testimonials
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
