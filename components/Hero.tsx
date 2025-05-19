@@ -44,7 +44,7 @@ export default function Home() {
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-3 text-white hover:bg-white/20 transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-white/10"
+                className="inline-block bg-transparent  border border-white/20 rounded-full px-8 py-3 text-white hover:bg-white/20 transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-white/10"
               >
                 Get Started
               </Link>
