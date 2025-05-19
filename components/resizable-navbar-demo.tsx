@@ -21,19 +21,19 @@ export default function NavbarDemo() {
     },
     {
       name: "About Us",
-      link: "/",
+      link: "/about",
     },
     {
       name: "Services",
-      link: "/",
+      link: "/services",
     },
     {
       name:"Projects",
-      link:"/",
+      link:"/projects",
     },
     {
       name:"Contact",
-      link:"/",
+      link:"/contact",
     },
   ]
 

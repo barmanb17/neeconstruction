@@ -51,7 +51,7 @@ export const DreamHouse = (): JSX.Element => {
           className="flex flex-col w-full lg:w-[498px] items-start gap-10"
         >
           <div className="flex flex-col items-start justify-center gap-4 relative w-full">
-            <h1 className="text-4xl sm:text-5xl lg:text-[64px] leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[60px] leading-tight">
               <span className={outfit.className}>Your dream </span>
               <span className={`${playfair.className} italic`}>house</span>
             </h1>

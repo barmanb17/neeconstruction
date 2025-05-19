@@ -25,6 +25,86 @@ const playfair = Playfair_Display({
   variable: '--font-playfair'
 });
 
+// Add keyframe animations
+const slideAnimationStyles = `
+  @keyframes slideDown {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+
+  .animate-slideDown {
+    animation: slideDown 300ms ease-out;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 300ms ease-out;
+  }
+
+  .accordion-trigger {
+    transition: all 300ms ease;
+  }
+
+  .accordion-trigger[data-state="open"] .icon-wrapper {
+    background-color: transparent;
+  }
+
+  .accordion-trigger[data-state="open"] .icon-background {
+    background-color: #e3572b;
+    transform: scale(1.05);
+  }
+
+  .accordion-trigger[data-state="open"] .icon-wrapper svg {
+    color: white;
+    transform: scale(1.1);
+    z-index: 1;
+  }
+
+  .accordion-trigger[data-state="open"] .title {
+    color: #e3572b;
+    transform: translateX(5px);
+  }
+
+  .icon-wrapper {
+    transition: all 300ms ease;
+    position: relative;
+  }
+
+  .icon-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transition: all 300ms ease;
+  }
+
+  .icon-wrapper svg {
+    transition: all 300ms ease;
+    color: #000;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title {
+    transition: all 300ms ease;
+  }
+`;
+
 export function Offer() {
   // Data for accordion items
   const accordionItems = [
@@ -58,6 +138,7 @@ export function Offer() {
 
   return (
     <section className="w-full bg-white py-20">
+      <style jsx>{slideAnimationStyles}</style>
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20 lg:justify-between">
           {/* Left Column */}
@@ -92,33 +173,29 @@ export function Offer() {
                   value={item.id}
                   className="border-b border-solid border-black/10"
                 >
-                  <AccordionTrigger className="py-4 hover:no-underline">
+                  <AccordionTrigger className="py-4 hover:no-underline accordion-trigger">
                     <div className="flex items-center gap-4 w-full">
-                      <div className="relative flex w-12 h-12 items-center justify-center">
+                      <div className="relative flex w-12 h-12 items-center justify-center icon-wrapper">
+                        <div className="icon-background" />
                         <Image
                           src="/star-2.svg"
                           alt="Star background"
                           width={47}
                           height={46}
-                          className="absolute w-[47px] h-[46px] top-px left-px"
+                          className="absolute w-[47px] h-[46px] top-px left-px z-0"
                         />
-                        {item.icon}
+                        <div className="relative z-1">
+                          {item.icon}
+                        </div>
                       </div>
                       <span
-                        className={`text-left text-base font-semibold ${outfit.className} ${
-                          item.id === "item-1" ? "text-[#e3572b]" : "text-black"
-                        }`}
+                        className={`text-left text-base font-semibold title ${outfit.className}`}
                       >
                         {item.title}
                       </span>
                     </div>
-                    {item.id === "item-1" ? (
-                      <MinusIcon className="h-6 w-6 shrink-0 text-black transition-transform" />
-                    ) : (
-                      <PlusIcon className="h-6 w-6 shrink-0 text-black transition-transform" />
-                    )}
                   </AccordionTrigger>
-                  <AccordionContent className="pl-16 pr-6">
+                  <AccordionContent className="pl-16 pr-6 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp transition-all">
                     <p className={`text-black/60 ${outfit.className}`}>
                       {item.content}
                     </p>
