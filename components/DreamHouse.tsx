@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -91,12 +92,20 @@ export const DreamHouse = (): JSX.Element => {
             ))}
           </div>
 
-          <Button
-            variant="outline"
-            className={`h-12 px-8 py-3 rounded-full border-orange text-orange hover:bg-orange/10 ${outfit.className}`}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            Get started
-          </Button>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className={`h-12 px-8 py-3 rounded-full border-orange text-orange hover:bg-orange/10 transition-colors duration-300 ${outfit.className}`}
+              >
+                Get started
+              </Button>
+            </Link>
+          </motion.div>
         </motion.div>
 
         <motion.div

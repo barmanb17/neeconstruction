@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Outfit, Playfair_Display } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -204,12 +205,14 @@ export function Offer() {
               ))}
             </Accordion>
 
-            <Button
-              variant="outline"
-              className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
-            >
-              Get started
-            </Button>
+            <Link href="/contact">
+              <Button
+                variant="outline"
+                className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
+              >
+                Get started
+              </Button>
+            </Link>
           </div>
 
           {/* Right Column - Image */}

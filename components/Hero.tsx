@@ -43,8 +43,8 @@ export default function Home() {
                 detail, from foundation to finish.
               </p>
               <Link
-                href="#"
-                className="inline-block bg-[#e3572b] rounded-full px-8 py-3 text-white hover:bg-[#d64d23] transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-orange-500/20"
+                href="/contact"
+                className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-8 py-3 text-white hover:bg-white/20 transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-white/10"
               >
                 Get Started
               </Link>

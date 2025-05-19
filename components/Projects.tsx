@@ -8,6 +8,7 @@ import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 import { PropertyModal } from "@/components/ui/property-modal";
 import Image from "next/image";
+import Link from "next/link";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -479,12 +480,14 @@ export function Projects() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            <Button
-              variant="outline"
-              className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
-            >
-              View all projects
-            </Button>
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
+              >
+                View all projects
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
 

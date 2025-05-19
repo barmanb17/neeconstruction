@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -37,7 +38,7 @@ const teamMembers = [
   },
 ];
 
-export const Success = (): JSX.Element => {
+export const Success = (): React.ReactElement => {
   return (
     <section className="w-full py-20 bg-white-bg">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 flex flex-col items-center gap-[60px]">
@@ -102,12 +103,20 @@ export const Success = (): JSX.Element => {
           </div>
         </motion.div>
 
-        <Button
-          variant="outline"
-          className={`border-orange text-orange rounded-full px-8 py-3 hover:bg-orange/10 ${outfit.className}`}
-        >
-          View all
-        </Button>
+        <Link href="/about">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Button
+              variant="outline"
+              className={`border-orange text-orange rounded-full px-8 py-3 hover:bg-orange/10 transition-colors duration-300 ${outfit.className}`}
+            >
+              View all
+            </Button>
+          </motion.div>
+        </Link>
       </div>
     </section>
   );

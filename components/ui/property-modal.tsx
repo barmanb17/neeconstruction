@@ -7,6 +7,7 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ interface PropertyModalProps {
       area: string;
       yearBuilt: number;
     };
+    agent: string;
   };
 }
 
@@ -53,6 +55,18 @@ const itemAnimation = {
 };
 
 export function PropertyModal({ isOpen, onClose, property }: PropertyModalProps) {
+  const router = useRouter();
+
+  const handleScheduleViewing = () => {
+    router.push(`/contact?property=${encodeURIComponent(property.name)}`);
+    onClose();
+  };
+
+  const handleContactAgent = () => {
+    router.push(`/contact?agent=${encodeURIComponent(property.agent)}`);
+    onClose();
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] sm:max-h-[85vh] bg-white rounded-2xl p-0 overflow-hidden flex flex-col">
@@ -182,11 +196,13 @@ export function PropertyModal({ isOpen, onClose, property }: PropertyModalProps)
               variants={itemAnimation}
             >
               <Button
+                onClick={handleScheduleViewing}
                 className={`w-full sm:flex-1 bg-[#e3572b] text-white hover:bg-[#d14d24] transition-all duration-200 hover:scale-[1.02] text-sm sm:text-base py-2.5 ${outfit.className}`}
               >
                 Schedule Viewing
               </Button>
               <Button
+                onClick={handleContactAgent}
                 variant="outline"
                 className={`w-full sm:flex-1 border-[#e3572b] text-[#e3572b] hover:bg-[#e3572b] hover:text-white transition-all duration-200 hover:scale-[1.02] text-sm sm:text-base py-2.5 ${outfit.className}`}
               >

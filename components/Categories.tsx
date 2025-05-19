@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -98,12 +99,14 @@ export function Categories() {
               industrial
             </p>
 
-            <Button
-              variant="outline"
-              className={`w-fit rounded-full border-white/40 px-8 py-3 text-white hover:bg-white hover:text-black transition-colors ${outfit.className}`}
-            >
-              Our work
-            </Button>
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className={`w-fit rounded-full border-white/40 px-8 py-3 text-white hover:bg-white hover:text-black transition-colors ${outfit.className}`}
+              >
+                Our work
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Right Content - Categories Card */}

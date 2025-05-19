@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { Playfair_Display } from "next/font/google";
+import Link from "next/link";
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -62,7 +63,9 @@ export default function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary">Contact Us</NavbarButton>
+            <Link href="/contact">
+              <NavbarButton variant="primary">Contact Us</NavbarButton>
+            </Link>
           </div>
         </NavBody>
 
@@ -116,9 +119,11 @@ export default function NavbarDemo() {
                       transition={{ delay: navItems.length * 0.1 }}
                       className="flex w-full flex-col gap-4 mt-6 px-2"
                     >
-                      <NavbarButton onClick={() => setIsMobileMenuOpen(false)} variant="primary" className="w-full">
-                        Contact Us
-                      </NavbarButton>
+                      <Link href="/contact">
+                        <NavbarButton onClick={() => setIsMobileMenuOpen(false)} variant="primary" className="w-full">
+                          Contact Us
+                        </NavbarButton>
+                      </Link>
                     </motion.div>
                   </motion.div>
                 </MobileNavMenu>

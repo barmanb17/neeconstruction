@@ -1,12 +1,13 @@
 'use client';
 
-import React, { type ReactElement } from "react";
+import React, { type ReactElement, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Outfit } from "next/font/google";
 import { motion } from "framer-motion";
 import { MailIcon } from "lucide-react";
+import { toast } from "sonner";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -24,6 +25,30 @@ const newsletterData = {
 };
 
 export const CTA = (): ReactElement => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) {
+      toast.error("Please enter your email address");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      // Here you would typically make an API call to your backend
+      // For now, we'll just simulate a successful subscription
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success("Successfully subscribed to our newsletter!");
+      setEmail("");
+    } catch (error) {
+      toast.error("Failed to subscribe. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative w-full overflow-visible -mb-[100px] z-10">
       {/* Background layers */}
@@ -62,7 +87,7 @@ export const CTA = (): ReactElement => {
               </div>
 
               {/* Email input and submit button */}
-              <div className="flex flex-col sm:flex-row items-center w-full max-w-[494px] gap-4 sm:gap-0">
+              <form onSubmit={handleSubmit} className="w-full max-w-2xl flex flex-col sm:flex-row gap-4">
                 <div className="w-full sm:w-auto flex-1 relative">
                   <div className="relative">
                     <MailIcon className="absolute left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -79,10 +104,15 @@ export const CTA = (): ReactElement => {
                       `}
                       type="email"
                       placeholder={newsletterData.inputPlaceholder}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
                 <Button 
+                  type="submit"
+                  disabled={isSubmitting}
                   className={`
                     w-full sm:w-auto h-[68px] 
                     bg-white hover:bg-white/90 
@@ -90,11 +120,12 @@ export const CTA = (): ReactElement => {
                     px-8 text-orange-600 font-medium 
                     ${outfit.className}
                     hover:scale-105 transform transition-transform duration-200
+                    disabled:opacity-50 disabled:cursor-not-allowed
                   `}
                 >
-                  {newsletterData.buttonText}
+                  {isSubmitting ? "Subscribing..." : newsletterData.buttonText}
                 </Button>
-              </div>
+              </form>
             </CardContent>
           </Card>
         </motion.div>
