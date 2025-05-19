@@ -38,13 +38,13 @@ const staggerContainer = {
 // Define data for footer sections to make the code more maintainable
 const companyLinks = [
   { label: "Home", href: "#" },
-  { label: "About us", href: "#" },
-  { label: "Listing", href: "#" },
-  { label: "Agents", href: "#" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
 ];
 
 const supportLinks = [
-  { label: "Contact us", href: "#" },
+  { label: "Contact us", href: "/contact" },
   { label: "Help", href: "#" },
 ];
 
@@ -94,20 +94,19 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
             >
               <div className="flex items-center gap-2">
                 <Image
-                  src="/galaxy.svg"
+                  src="/nee1.png"
                   alt="Galaxy"
                   width={30}
                   height={30}
                   className="opacity-90"
                 />
                 <span className={`text-2xl text-white italic ${playfair.className}`}>
-                  Skyline
+                  Construction
                 </span>
               </div>
 
               <p className={`text-gray-400 text-sm ${outfit.className}`}>
-                A breathtaking skyline, where towering skyscrapers meet the
-                horizon, epitomizes urban grandeur.
+              Premium construction services for residential, commercial, and industrial projects. Excellence in every detail, from foundation to finish.
               </p>
             </motion.div>
 
@@ -177,7 +176,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
           <div className="flex flex-col sm:flex-row justify-between gap-3 text-sm">
             <p className={`text-gray-500 ${outfit.className}`}>
-              © Skyline Inc. All Rights Reserved.
+              © NEE Constructions. All Rights Reserved.
             </p>
 
             <p className={`text-gray-500 ${outfit.className}`}>

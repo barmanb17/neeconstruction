@@ -127,9 +127,9 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
 export function Experience() {
   // Data for statistics to enable mapping
   const statistics = [
-    { label: "Houses for rent", value: "8,021", prefix: "" },
-    { label: "States", value: "56", prefix: "+" },
-    { label: "Homes to buy", value: "1,025", prefix: "" },
+    { label: "Projects Completed", value: "200", prefix: "+" },
+    { label: "Members", value: "56", prefix: "+" },
+    { label: "Awards", value: "20", prefix: "+" },
     { label: "Agents", value: "215", prefix: "+" },
   ];
 

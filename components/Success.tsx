@@ -22,17 +22,17 @@ const fadeIn = {
 
 const teamMembers = [
   {
-    name: "John Belly",
+    name: "Pranjal Kalita",
     role: "Founder",
     image: "/ellipse-109.png",
   },
   {
-    name: "Shelly Belly",
+    name: "Rohan Deka",
     role: "Co-Founder",
     image: "/picture-4.png",
   },
   {
-    name: "Turan Yumi",
+    name: "Shivan Saha",
     role: "CTO",
     image: "/picture-5.png",
   },

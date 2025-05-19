@@ -51,8 +51,8 @@ const properties = [
   {
     id: 1,
     name: "Sunset Ridge Villa - 5 BHK",
-    location: "Malibu, California, USA",
-    price: "$900K",
+    location: "Amingaon Guwahati, IND",
+    price: "₹ 900K",
     image: "/picture.png",
     category: "Residential",
     description: "Luxurious 5-bedroom villa with stunning ocean views, modern architecture, and premium finishes throughout. Features include a gourmet kitchen, home theater, wine cellar, and infinity pool.",
@@ -76,8 +76,8 @@ const properties = [
   {
     id: 4,
     name: "Ocean View Estate - 6 BHK",
-    location: "Miami, Florida, USA",
-    price: "$1.2M",
+    location: "Shillong, Meghalaya, IND",
+    price: "₹ 1.2M",
     image: "/picture-1.png",
     category: "Residential",
     description: "Stunning oceanfront estate with panoramic views, featuring a private beach access, infinity pool, and luxury amenities throughout.",
@@ -101,8 +101,8 @@ const properties = [
   {
     id: 7,
     name: "Hillside Mansion - 4 BHK",
-    location: "Beverly Hills, California, USA",
-    price: "$950K",
+    location: "Dispur, Guwahati, IND",
+    price: "₹ 950K",
     image: "/picture-2.png",
     category: "Residential",
     description: "Elegant hillside mansion with city views, featuring modern architecture, smart home technology, and luxurious outdoor spaces.",
@@ -128,7 +128,7 @@ const properties = [
   {
     id: 3,
     name: "Modern Office Tower",
-    location: "Manhattan, New York, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$2.5M",
     image: "/picture.png",
     category: "Commercial",
@@ -155,7 +155,7 @@ const properties = [
   {
     id: 6,
     name: "Tech Innovation Hub",
-    location: "Silicon Valley, CA, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$3.2M",
     image: "/picture-1.png",
     category: "Commercial",
@@ -182,7 +182,7 @@ const properties = [
   {
     id: 9,
     name: "Retail Plaza",
-    location: "Chicago, Illinois, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$1.8M",
     image: "/picture-2.png",
     category: "Commercial",
@@ -211,7 +211,7 @@ const properties = [
   {
     id: 2,
     name: "Luxury Penthouse Suite",
-    location: "Downtown, Los Angeles, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$850K",
     image: "/picture.png",
     category: "Apartments",
@@ -236,7 +236,7 @@ const properties = [
   {
     id: 5,
     name: "Studio Loft",
-    location: "Arts District, Seattle, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$350K",
     image: "/picture-1.png",
     category: "Apartments",
@@ -261,7 +261,7 @@ const properties = [
   {
     id: 8,
     name: "Family Apartment",
-    location: "Suburban, Boston, USA",
+    location: "Dispur, Guwahati, IND",
     price: "$650K",
     image: "/picture-2.png",
     category: "Apartments",
@@ -430,7 +430,7 @@ export function Projects() {
 
                   {/* Price and details link */}
                   <div className="flex items-center justify-between">
-                    <span className={`text-xl font-semibold text-[#e3572b] lg:text-2xl ${outfit.className}`}>
+                    <span className={`text-xl font-semibold text-[#e3572b] lg:text-3xl ${outfit.className}`}>
                       {property.price}
                     </span>
                     <motion.button 

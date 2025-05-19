@@ -65,7 +65,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
+      
       className={cn(
       "inset-x-0 z-40 w-full transition-all duration-300",
       visible ? "fixed top-0" : "sticky top-0",

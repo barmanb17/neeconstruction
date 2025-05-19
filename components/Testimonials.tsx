@@ -35,8 +35,8 @@ const cardVariants = {
 const testimonials = [
   {
     id: 1,
-    name: "Samuel Oam",
-    position: "CEO, Arbor",
+    name: "Krishanu Baruah",
+    position: "Client, Nagaon",
     rating: "5/5",
     image: "/picture-7.png",
     title: "Unmatched Quality",
@@ -45,8 +45,8 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Kristie Jeno",
-    position: "CFO, Stratland",
+    name: "Bikash Gupta",
+    position: "CFO, Zaatio",
     rating: "5/5",
     image: "/picture-8.png",
     title: "Outstanding Experience",
@@ -55,8 +55,8 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Cristian Neol",
-    position: "CMO, Airneo",
+    name: "Amar Nath",
+    position: "Client, Guwahati",
     rating: "5/5",
     image: "/picture-9.png",
     title: "Exceptional Service",

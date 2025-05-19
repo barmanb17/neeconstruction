@@ -43,21 +43,21 @@ const staggerContainer = {
 const locations = [
   {
     id: 1,
-    name: "Santa Ana Office",
-    address: "123 Tenth Avenue, Manhattan",
-    fullAddress: "New York, NY 10003, USA",
-    phone: "+1 (555) 123-4567",
+    name: "NEE Office",
+    address: "AEC Campus, AEC",
+    fullAddress: "Jalukbari, Ghy 781013, USA",
+    phone: "+91-8876838584",
     imageUrl: "/image.png",
-    position: { top: "15%", left: "20%" }
+    position: { top: "10%", left: "10%" }
   },
   {
     id: 2,
-    name: "Preston Rd. Inglewood",
-    address: "111 North Bridge Road",
-    fullAddress: "Peninsula Plaza Singapore 179098",
-    phone: "+65 6789 0123",
+    name: "NEE Office 2",
+    address: "House no 77 Chokitup",
+    fullAddress: "Nagaon, Assam 782003",
+    phone: "+91 8876838584",
     imageUrl: "/image-1.png",
-    position: { top: "45%", left: "65%" }
+    position: { top: "25%", left: "55%" }
   },
 ];
 
@@ -66,22 +66,22 @@ const contactInfo = [
     id: 1,
     icon: <PhoneIcon className="w-5 h-5" />,
     title: "Phone Number",
-    value: "+1 (555) 123-4567",
+    value: "+91 8876838584",
     link: "tel:+15551234567"
   },
   {
     id: 2,
     icon: <MapPinIcon className="w-5 h-5" />,
     title: "Main Office",
-    value: "123 Business Avenue, Suite 100",
+    value: "Jalukbari Guwahati IND",
     link: "https://maps.google.com"
   }
 ];
 
 export const Address = (): JSX.Element => {
   return (
-    <section className="relative w-full bg-gradient-to-b from-orange-50 to-white overflow-hidden py-20">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+    <section className="relative w-full bg-gradient-to-b from-orange-50 to-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mt-5 sm:px-8 lg:px-8">
         {/* Header Section */}
         <motion.div 
           initial="hidden"
@@ -184,7 +184,7 @@ export const Address = (): JSX.Element => {
                     zIndex: 10 
                   }}
                 >
-                  <Card className="w-[320px] lg:w-[380px] bg-gray-900 rounded-[32px] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <Card className="w-[320px] lg:w-[340px] bg-gray-900 rounded-[32px] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                     <CardContent className="p-4 lg:p-6">
                       <div className="flex gap-4 items-start w-full">
                         <div className="relative w-[80px] h-[80px] lg:w-[102px] lg:h-[102px] rounded-[18px] overflow-hidden flex-shrink-0">
@@ -215,7 +215,7 @@ export const Address = (): JSX.Element => {
                         </div>
                       </div>
 
-                      <div className="relative w-[51px] h-[51px] mt-2 mx-auto">
+                      <div className="relative w-[51px] mx-auto">
                         <div className="absolute w-9 h-9 top-[7px] left-[7px] bg-gray-900 rounded-[10px] rotate-[46.93deg]" />
                       </div>
                     </CardContent>

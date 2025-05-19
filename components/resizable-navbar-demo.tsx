@@ -60,7 +60,7 @@ export default function NavbarDemo() {
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody className="hidden lg:flex">
-          <NavbarLogo />
+          <NavbarLogo  />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <Link href="/contact">
