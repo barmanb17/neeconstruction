@@ -12,6 +12,12 @@ import {
 } from "@/components/ui/resizable-navbar"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-playfair'
+});
 
 export default function NavbarDemo() {
   const navItems = [
@@ -99,7 +105,7 @@ export default function NavbarDemo() {
                         transition={{ delay: idx * 0.1 }}
                         href={item.link}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="relative text-black hover:text-orange-500 transition-colors"
+                        className="relative text-gray-600 hover:text-gray-900 transition-colors"
                       >
                         <span className="block py-3 px-2 border-b border-gray-100">{item.name}</span>
                       </motion.a>

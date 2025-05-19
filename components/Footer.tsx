@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -58,9 +59,16 @@ const socialLinks = [
   { icon: <LinkedinIcon className="w-6 h-6" />, href: "#", label: "LinkedIn" },
 ];
 
-export const Footer = (): ReactElement => {
+interface FooterProps {
+  isLandingPage?: boolean;
+}
+
+export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => {
   return (
-    <footer className="relative w-full overflow-hidden pt-[140px]">
+    <footer className={cn(
+      "relative w-full overflow-hidden",
+      isLandingPage ? "pt-[120px]" : "pt-[80px]"
+    )}>
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
       
@@ -70,19 +78,19 @@ export const Footer = (): ReactElement => {
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-20">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="flex flex-col gap-10"
+          className="flex flex-col gap-8"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo and description */}
             <motion.div 
               variants={fadeIn}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-4"
             >
               <div className="flex items-center gap-2">
                 <Image
@@ -97,25 +105,25 @@ export const Footer = (): ReactElement => {
                 </span>
               </div>
 
-              <p className={`text-gray-400 ${outfit.className}`}>
+              <p className={`text-gray-400 text-sm ${outfit.className}`}>
                 A breathtaking skyline, where towering skyscrapers meet the
                 horizon, epitomizes urban grandeur.
               </p>
             </motion.div>
 
             {/* Company links */}
-            <motion.div variants={fadeIn} className="flex flex-col gap-6">
-              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
+            <motion.div variants={fadeIn} className="flex flex-col gap-4">
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-sm ${outfit.className}`}>
                 COMPANY
               </h3>
 
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 {companyLinks.map((link, index) => (
                   <motion.a
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-gray-400 hover:text-orange-400 transition-colors text-sm ${outfit.className}`}
                   >
                     {link.label}
                   </motion.a>
@@ -124,18 +132,18 @@ export const Footer = (): ReactElement => {
             </motion.div>
 
             {/* Support links */}
-            <motion.div variants={fadeIn} className="flex flex-col gap-6">
-              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
+            <motion.div variants={fadeIn} className="flex flex-col gap-4">
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-sm ${outfit.className}`}>
                 SUPPORT
               </h3>
 
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-col gap-3">
                 {supportLinks.map((link, index) => (
                   <motion.a
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-gray-400 hover:text-orange-400 transition-colors text-sm ${outfit.className}`}
                   >
                     {link.label}
                   </motion.a>
@@ -144,12 +152,12 @@ export const Footer = (): ReactElement => {
             </motion.div>
 
             {/* Social links */}
-            <motion.div variants={fadeIn} className="flex flex-col gap-6">
-              <h3 className={`text-gray-200 font-semibold tracking-wider ${outfit.className}`}>
+            <motion.div variants={fadeIn} className="flex flex-col gap-4">
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-sm ${outfit.className}`}>
                 SOCIAL
               </h3>
 
-              <div className="flex gap-6">
+              <div className="flex gap-4">
                 {socialLinks.map((link, index) => (
                   <motion.a
                     key={index}
@@ -165,9 +173,9 @@ export const Footer = (): ReactElement => {
             </motion.div>
           </div>
 
-          <Separator className="bg-gray-800" />
+          <Separator className="bg-gray-800 my-6" />
 
-          <div className="flex flex-col sm:flex-row justify-between gap-4">
+          <div className="flex flex-col sm:flex-row justify-between gap-3 text-sm">
             <p className={`text-gray-500 ${outfit.className}`}>
               © Skyline Inc. All Rights Reserved.
             </p>

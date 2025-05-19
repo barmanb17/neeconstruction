@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 
 const outfit = Outfit({ subsets: ["latin"] });
 const playfair = Playfair_Display({ 
@@ -63,7 +65,9 @@ const testimonials = [
   },
 ];
 
-export const Testimonials = (): JSX.Element => {
+export const Testimonials = (): React.ReactElement => {
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
   return (
     <section className="w-full py-20 bg-gradient-to-b from-white to-orange-50/30">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
@@ -179,6 +183,7 @@ export const Testimonials = (): JSX.Element => {
           <motion.div variants={fadeIn}>
             <Button
               variant="outline"
+              onClick={() => setIsDialogOpen(true)}
               className={`
                 px-8 py-3 rounded-full border-orange-500 text-orange-500 
                 hover:bg-orange-50 hover:text-orange-600 transition-colors
@@ -188,6 +193,108 @@ export const Testimonials = (): JSX.Element => {
               View all testimonials
             </Button>
           </motion.div>
+
+          {/* Testimonials Dialog */}
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-white/95 backdrop-blur-sm border-none shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] rounded-2xl">
+              <DialogHeader className="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 py-4 -mx-6 -mt-6 mb-6">
+                <div className="flex flex-row items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <img 
+                      className="w-8 h-8 opacity-80" 
+                      alt="Star" 
+                      src="/star-1.svg" 
+                    />
+                    <DialogTitle className={`text-2xl sm:text-3xl font-semibold ${playfair.className}`}>
+                      All Testimonials
+                    </DialogTitle>
+                    <img 
+                      className="w-8 h-8 opacity-80" 
+                      alt="Star" 
+                      src="/star-1.svg" 
+                    />
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsDialogOpen(false)}
+                    className="rounded-full hover:bg-gray-100/80 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
+                <p className={`text-base text-gray-600 mt-2 ${outfit.className}`}>
+                  Discover what our clients have to say about their experience with us
+                </p>
+              </DialogHeader>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-1">
+                {testimonials.map((testimonial) => (
+                  <motion.div
+                    key={testimonial.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Card className="bg-white hover:shadow-xl transition-all duration-300 border border-gray-100/50 hover:border-orange-100 group">
+                      <CardContent className="flex flex-col gap-5 p-6">
+                        {/* User Info */}
+                        <div className="flex items-center justify-between w-full">
+                          <div className="flex items-center gap-4">
+                            <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-orange-100 group-hover:ring-orange-200 transition-colors">
+                              <Image
+                                src={testimonial.avatar}
+                                alt={testimonial.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+
+                            <div className="flex flex-col">
+                              <h3 className={`text-lg font-medium text-gray-900 group-hover:text-orange-600 transition-colors ${outfit.className}`}>
+                                {testimonial.name}
+                              </h3>
+                              <p className={`text-sm text-gray-500 ${outfit.className}`}>
+                                {testimonial.position}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 bg-orange-50/50 px-3 py-1.5 rounded-full">
+                            <StarIcon className="w-5 h-5 text-orange-500" fill="currentColor" />
+                            <span className={`text-sm font-medium text-orange-600 ${outfit.className}`}>
+                              {testimonial.rating}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Property Image */}
+                        <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-gray-50">
+                          <Image
+                            src={testimonial.image}
+                            alt="Property"
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+
+                        {/* Review Content */}
+                        <div className="flex flex-col gap-2">
+                          <h4 className={`text-xl font-medium text-gray-900 group-hover:text-orange-600 transition-colors ${outfit.className}`}>
+                            {testimonial.title}
+                          </h4>
+                          <p className={`text-base text-gray-600 leading-relaxed ${outfit.className}`}>
+                            {testimonial.text}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
         </motion.div>
       </div>
     </section>
