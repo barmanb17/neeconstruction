@@ -1,7 +1,7 @@
 'use client';
 
 import { CalendarIcon, ClipboardCheckIcon, FileTextIcon } from "lucide-react";
-import React from "react";
+import React, { JSX } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";

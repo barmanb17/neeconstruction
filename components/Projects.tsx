@@ -496,7 +496,10 @@ export function Projects() {
           <PropertyModal
             isOpen={!!selectedProperty}
             onClose={handleCloseModal}
-            property={selectedProperty}
+            property={{
+              ...selectedProperty,
+              agent: "Default Agent" // Adding required agent property
+            }}
           />
         )}
       </div>
