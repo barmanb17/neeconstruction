@@ -1,7 +1,7 @@
 'use client';
 
 import { MapPinIcon, PhoneIcon, StarIcon } from "lucide-react";
-import React from "react";
+import React, { JSX } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Outfit, Playfair_Display } from "next/font/google";
