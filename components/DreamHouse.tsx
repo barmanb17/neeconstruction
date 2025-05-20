@@ -43,7 +43,7 @@ const steps = [
 export const DreamHouse = (): JSX.Element => {
   return (
     <section className="w-full min-h-[500px] sm:min-h-[600px] lg:min-h-[673px] bg-orage-light-bg overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -73,16 +73,16 @@ export const DreamHouse = (): JSX.Element => {
                 viewport={{ once: true }}
                 className="flex items-center gap-3 sm:gap-4"
               >
-                <div className="relative flex w-10 h-10 sm:w-12 sm:h-12 items-center justify-center">
+                <div className="relative flex w-12 h-12 sm:w-14 sm:h-14 items-center justify-center">
                   <Image
                     src="/star-2.svg"
                     alt="Star"
                     width={40}
                     height={40}
-                    className="absolute w-[40px] h-[40px] sm:w-[47px] sm:h-[46px]"
+                    className="absolute w-[42px] h-[42px] sm:w-[47px] sm:h-[46px]"
                   />
                   <div className="relative z-10 text-orange">
-                    {step.icon}
+                    {React.cloneElement(step.icon, { className: "w-5 h-5 sm:w-6 sm:h-6" })}
                   </div>
                 </div>
                 <span className={`text-base sm:text-lg text-black ${outfit.className}`}>
@@ -100,7 +100,7 @@ export const DreamHouse = (): JSX.Element => {
             <Link href="/contact">
               <Button
                 variant="outline"
-                className={`h-10 sm:h-12 px-6 sm:px-8 py-2 sm:py-3 rounded-full border-orange text-orange hover:bg-orange/10 transition-colors duration-300 text-sm sm:text-base ${outfit.className}`}
+                className={`h-11 sm:h-12 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border-orange text-orange hover:bg-orange/10 transition-colors duration-300 text-base sm:text-lg font-medium ${outfit.className}`}
               >
                 Get started
               </Button>
@@ -113,7 +113,7 @@ export const DreamHouse = (): JSX.Element => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full lg:w-[582px] h-[300px] sm:h-[350px] lg:h-[433px]"
+          className="relative w-full lg:w-[582px] h-[320px] sm:h-[350px] lg:h-[433px] mt-6 sm:mt-0"
         >
           <Card className="w-full h-full overflow-hidden border-none rounded-xl">
             <Image

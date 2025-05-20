@@ -81,7 +81,7 @@ const contactInfo = [
 export const Address = (): JSX.Element => {
   return (
     <section className="relative w-full bg-gradient-to-b from-orange-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Header Section */}
         <motion.div 
           initial="hidden"
@@ -97,7 +97,7 @@ export const Address = (): JSX.Element => {
             <div className="relative w-8 h-8 sm:w-10 sm:h-10 bg-orange-50 rounded-full flex items-center justify-center mr-2">
               <StarIcon className="w-4 h-4 sm:w-[17px] sm:h-[17px] text-orange-500" />
             </div>
-            <span className={`text-sm sm:text-base text-gray-900 font-medium ${outfit.className}`}>
+            <span className={`text-base sm:text-lg text-gray-900 font-medium ${outfit.className}`}>
               Our Offices
             </span>
           </Badge>
@@ -111,7 +111,7 @@ export const Address = (): JSX.Element => {
                 Visit us!
               </span>
             </h1>
-            <p className={`text-sm sm:text-base lg:text-lg text-gray-600 text-center max-w-2xl px-4 sm:px-0 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg lg:text-xl text-gray-600 text-center max-w-2xl px-4 sm:px-0 ${outfit.className}`}>
               Reach out anytime! Whether it&apos;s a question, a suggestion, or
               just to say hi, we&apos;re always here to help
             </p>
@@ -138,13 +138,13 @@ export const Address = (): JSX.Element => {
                 <Card className="bg-white border-orange-100 hover:border-orange-200 transition-colors">
                   <CardContent className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-orange-500 group-hover:bg-orange-100 transition-colors">
-                      {React.cloneElement(info.icon, { className: "w-4 h-4 sm:w-5 sm:h-5" })}
+                      {React.cloneElement(info.icon, { className: "w-5 h-5 sm:w-6 sm:h-6" })}
                     </div>
                     <div className="flex flex-col">
-                      <span className={`text-xs sm:text-sm text-gray-500 ${outfit.className}`}>
+                      <span className={`text-sm sm:text-base text-gray-500 ${outfit.className}`}>
                         {info.title}
                       </span>
-                      <span className={`text-sm sm:text-base font-medium text-gray-900 ${outfit.className}`}>
+                      <span className={`text-base sm:text-lg font-medium text-gray-900 ${outfit.className}`}>
                         {info.value}
                       </span>
                     </div>
@@ -197,25 +197,25 @@ export const Address = (): JSX.Element => {
                         </div>
 
                         <div className="flex flex-col gap-2 sm:gap-3">
-                          <h2 className={`font-medium text-white text-lg sm:text-xl lg:text-2xl ${outfit.className}`}>
+                          <h2 className={`font-medium text-white text-xl sm:text-2xl lg:text-3xl ${outfit.className}`}>
                             {location.name}
                           </h2>
 
-                          <div className="space-y-0.5 sm:space-y-1">
-                            <p className={`text-gray-300 text-xs sm:text-sm ${outfit.className}`}>
+                          <div className="space-y-1 sm:space-y-1.5">
+                            <p className={`text-gray-300 text-base sm:text-lg ${outfit.className}`}>
                               {location.address}
                             </p>
-                            <p className={`text-gray-400 text-xs sm:text-sm ${outfit.className}`}>
+                            <p className={`text-gray-400 text-base sm:text-lg ${outfit.className}`}>
                               {location.fullAddress}
                             </p>
-                            <p className={`text-orange-400 text-xs sm:text-sm ${outfit.className}`}>
+                            <p className={`text-orange-400 text-base sm:text-lg ${outfit.className}`}>
                               {location.phone}
                             </p>
                           </div>
                         </div>
                       </div>
 
-                      <div className="relative w-[40px] sm:w-[51px] mx-auto mt-2 sm:mt-3">
+                      <div className="relative w-[40px] sm:w-[51px] mx-auto mt-3 sm:mt-4">
                         <div className="absolute w-7 h-7 sm:w-9 sm:h-9 top-[5px] sm:top-[7px] left-[5px] sm:left-[7px] bg-gray-900 rounded-[10px] rotate-[46.93deg]" />
                       </div>
                     </CardContent>
@@ -248,18 +248,18 @@ export const Address = (): JSX.Element => {
                       </div>
 
                       <div className="flex flex-col gap-2">
-                        <h2 className={`font-medium text-white text-lg sm:text-xl ${outfit.className}`}>
+                        <h2 className={`font-medium text-white text-xl sm:text-2xl ${outfit.className}`}>
                           {location.name}
                         </h2>
 
-                        <div className="space-y-0.5">
-                          <p className={`text-gray-300 text-xs sm:text-sm ${outfit.className}`}>
+                        <div className="space-y-1">
+                          <p className={`text-gray-300 text-base sm:text-lg ${outfit.className}`}>
                             {location.address}
                           </p>
-                          <p className={`text-gray-400 text-xs sm:text-sm ${outfit.className}`}>
+                          <p className={`text-gray-400 text-base sm:text-lg ${outfit.className}`}>
                             {location.fullAddress}
                           </p>
-                          <p className={`text-orange-400 text-xs sm:text-sm ${outfit.className}`}>
+                          <p className={`text-orange-400 text-base sm:text-lg ${outfit.className}`}>
                             {location.phone}
                           </p>
                         </div>

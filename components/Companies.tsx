@@ -17,11 +17,11 @@ export default function Companies() {
     const continuousLogos = [...logos, ...logos, ...logos, ...logos];
 
     return (
-        <div className="w-full overflow-hidden bg-white pt-10 sm:pt-12 lg:pt-16 pb-4 sm:pb-6 lg:pb-8">
+        <div className="w-full overflow-hidden bg-white pt-12 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 lg:pb-10">
             <div className="relative">
                 {/* First set of logos */}
                 <motion.div
-                    className="flex gap-10 sm:gap-14 lg:gap-20"
+                    className="flex gap-8 sm:gap-14 lg:gap-20"
                     animate={{
                         x: ["0%", "-50%"],
                     }}
@@ -46,7 +46,7 @@ export default function Companies() {
                                 alt={logo.alt}
                                 width={160}
                                 height={60}
-                                className="h-10 w-auto sm:h-12 lg:h-16 object-contain opacity-80 hover:opacity-100 transition-opacity"
+                                className="h-14 w-auto sm:h-16 lg:h-20 object-contain opacity-80 hover:opacity-100 transition-opacity"
                                 priority={index < 5} // Load first set of logos immediately
                             />
                         </motion.div>
@@ -54,8 +54,8 @@ export default function Companies() {
                 </motion.div>
 
                 {/* Gradient overlays for smooth fade effect */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
             </div>
         </div>
     );

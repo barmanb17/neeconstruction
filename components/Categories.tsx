@@ -79,30 +79,30 @@ export function Categories() {
         priority
       />
       
-      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-8 py-20">
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-8 py-16 sm:py-20 lg:py-24">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-10 sm:gap-12 lg:gap-16">
           {/* Left Content */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="flex flex-col gap-6 max-w-sm"
+            className="flex flex-col gap-6 sm:gap-8 w-full lg:max-w-sm"
           >
-            <h2 className={`text-4xl sm:text-5xl lg:text-[64px] text-white leading-tight`}>
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-[64px] text-white leading-tight`}>
               <span className={outfit.className}>Project </span>
               <span className={`italic ${playfair.className}`}>Categories</span>
             </h2>
 
-            <p className={`text-base sm:text-lg text-white/80 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg lg:text-xl text-white/80 ${outfit.className}`}>
               Discover diverse real estate categories, from residential to
               industrial
             </p>
 
-            <Link href="/projects">
+            <Link href="/projects" className="mt-2 sm:mt-4">
               <Button
                 variant="outline"
-                className={`w-fit rounded-full border-white/40 px-8 py-3 text-white hover:bg-white hover:text-black transition-colors ${outfit.className}`}
+                className={`w-fit rounded-full border-white/40 px-8 sm:px-10 py-3.5 sm:py-4 text-base sm:text-lg font-medium text-white hover:bg-white hover:text-black transition-colors ${outfit.className}`}
               >
                 Our work
               </Button>
@@ -115,35 +115,35 @@ export function Categories() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={slideIn}
-            className="w-full lg:w-[579px]"
+            className="w-full lg:w-[579px] mt-8 sm:mt-10 lg:mt-0"
           >
-            <Card className="bg-white/10 backdrop-blur-[10px] border-none p-8 rounded-3xl">
-              <div className="grid grid-cols-2 gap-8">
+            <Card className="bg-white/10 backdrop-blur-[10px] border-none p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl">
+              <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
                 {categories.map((category) => (
                   <motion.div
                     key={category.id}
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-3"
+                    className="flex items-center gap-4 sm:gap-5"
                     style={{ gridArea: category.gridArea }}
                   >
-                    <div className="relative flex w-12 h-12 items-center justify-center">
+                    <div className="relative flex w-14 h-14 sm:w-16 sm:h-16 items-center justify-center">
                       <Image
                         src="/star-2.svg"
                         alt="Star background"
                         width={47}
                         height={46}
-                        className="absolute"
+                        className="absolute w-[42px] h-[42px] sm:w-[47px] sm:h-[46px]"
                       />
                       <Image
                         src={category.icon}
                         alt={`${category.name} icon`}
-                        width={16}
-                        height={16}
-                        className="relative z-10"
+                        width={20}
+                        height={20}
+                        className="relative z-10 w-5 h-5 sm:w-6 sm:h-6"
                       />
                     </div>
 
-                    <span className={`text-base text-white ${outfit.className}`}>
+                    <span className={`text-base sm:text-lg font-medium text-white ${outfit.className}`}>
                       {category.name}
                     </span>
                   </motion.div>

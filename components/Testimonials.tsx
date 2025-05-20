@@ -90,10 +90,10 @@ export const Testimonials = (): React.ReactElement => {
               />
 
               <h2 className="text-center">
-                <span className={`text-2xl sm:text-3xl lg:text-[64px] leading-tight font-normal ${outfit.className}`}>
+                <span className={`text-3xl sm:text-4xl lg:text-[64px] leading-tight font-normal ${outfit.className}`}>
                   Our
                 </span>
-                <span className={`text-2xl sm:text-3xl lg:text-[64px] leading-tight italic ml-1 sm:ml-2 ${playfair.className}`}>
+                <span className={`text-3xl sm:text-4xl lg:text-[64px] leading-tight italic ml-1 sm:ml-2 ${playfair.className}`}>
                   Testimonials
                 </span>
               </h2>
@@ -105,7 +105,7 @@ export const Testimonials = (): React.ReactElement => {
               />
             </div>
 
-            <p className={`text-sm sm:text-base lg:text-lg text-gray-600 text-center max-w-[515px] px-4 sm:px-0 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg lg:text-xl text-gray-600 text-center max-w-[515px] px-4 sm:px-0 ${outfit.className}`}>
               See how we've turned clients' real estate dreams into reality with
               exceptional service
             </p>
@@ -140,7 +140,7 @@ export const Testimonials = (): React.ReactElement => {
                           <h3 className={`text-base sm:text-lg font-medium text-gray-900 ${outfit.className}`}>
                             {testimonial.name}
                           </h3>
-                          <p className={`text-xs sm:text-sm text-gray-500 ${outfit.className}`}>
+                          <p className={`text-sm sm:text-base text-gray-500 ${outfit.className}`}>
                             {testimonial.position}
                           </p>
                         </div>
@@ -148,7 +148,7 @@ export const Testimonials = (): React.ReactElement => {
 
                       <div className="flex items-center gap-1 sm:gap-2">
                         <StarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" fill="currentColor" />
-                        <span className={`text-xs sm:text-sm font-medium text-orange-500 ${outfit.className}`}>
+                        <span className={`text-sm sm:text-base font-medium text-orange-500 ${outfit.className}`}>
                           {testimonial.rating}
                         </span>
                       </div>
@@ -167,10 +167,10 @@ export const Testimonials = (): React.ReactElement => {
 
                     {/* Review Content */}
                     <div className="flex flex-col gap-1 sm:gap-2">
-                      <h4 className={`text-lg sm:text-xl font-medium text-gray-900 ${outfit.className}`}>
+                      <h4 className={`text-xl sm:text-2xl font-medium text-gray-900 ${outfit.className}`}>
                         {testimonial.title}
                       </h4>
-                      <p className={`text-sm sm:text-base text-gray-600 line-clamp-3 ${outfit.className}`}>
+                      <p className={`text-base sm:text-lg text-gray-600 line-clamp-3 ${outfit.className}`}>
                         {testimonial.text}
                       </p>
                     </div>
@@ -186,8 +186,8 @@ export const Testimonials = (): React.ReactElement => {
               variant="outline"
               onClick={() => setIsDialogOpen(true)}
               className={`
-                px-6 sm:px-8 py-2 sm:py-3 rounded-full border-orange-500 text-orange-500 
-                hover:bg-orange-50 hover:text-orange-600 transition-colors text-sm sm:text-base
+                px-6 sm:px-8 py-2.5 sm:py-3 rounded-full border-orange-500 text-orange-500 
+                hover:bg-orange-50 hover:text-orange-600 transition-colors text-base sm:text-lg font-medium
                 ${outfit.className}
               `}
             >
@@ -206,7 +206,7 @@ export const Testimonials = (): React.ReactElement => {
                       alt="Star" 
                       src="/star-1.svg" 
                     />
-                    <DialogTitle className={`text-xl sm:text-2xl lg:text-3xl font-semibold ${playfair.className}`}>
+                    <DialogTitle className={`text-2xl sm:text-3xl lg:text-4xl font-semibold ${playfair.className}`}>
                       All Testimonials
                     </DialogTitle>
                     <img 
@@ -224,7 +224,7 @@ export const Testimonials = (): React.ReactElement => {
                     <X className="h-4 w-4 sm:h-5 sm:w-5" />
                   </Button>
                 </div>
-                <p className={`text-sm sm:text-base text-gray-600 mt-1 sm:mt-2 ${outfit.className}`}>
+                <p className={`text-base sm:text-lg text-gray-600 mt-1 sm:mt-2 ${outfit.className}`}>
                   Discover what our clients have to say about their experience with us
                 </p>
               </DialogHeader>
@@ -255,7 +255,7 @@ export const Testimonials = (): React.ReactElement => {
                               <h3 className={`text-base sm:text-lg font-medium text-gray-900 group-hover:text-orange-600 transition-colors ${outfit.className}`}>
                                 {testimonial.name}
                               </h3>
-                              <p className={`text-xs sm:text-sm text-gray-500 ${outfit.className}`}>
+                              <p className={`text-sm sm:text-base text-gray-500 ${outfit.className}`}>
                                 {testimonial.position}
                               </p>
                             </div>
@@ -263,7 +263,7 @@ export const Testimonials = (): React.ReactElement => {
 
                           <div className="flex items-center gap-1 sm:gap-2 bg-orange-50/50 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">
                             <StarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" fill="currentColor" />
-                            <span className={`text-xs sm:text-sm font-medium text-orange-600 ${outfit.className}`}>
+                            <span className={`text-sm sm:text-base font-medium text-orange-600 ${outfit.className}`}>
                               {testimonial.rating}
                             </span>
                           </div>
@@ -283,10 +283,10 @@ export const Testimonials = (): React.ReactElement => {
 
                         {/* Review Content */}
                         <div className="flex flex-col gap-1 sm:gap-2">
-                          <h4 className={`text-lg sm:text-xl font-medium text-gray-900 group-hover:text-orange-600 transition-colors ${outfit.className}`}>
+                          <h4 className={`text-xl sm:text-2xl font-medium text-gray-900 group-hover:text-orange-600 transition-colors ${outfit.className}`}>
                             {testimonial.title}
                           </h4>
-                          <p className={`text-sm sm:text-base text-gray-600 leading-relaxed ${outfit.className}`}>
+                          <p className={`text-base sm:text-lg text-gray-600 leading-relaxed ${outfit.className}`}>
                             {testimonial.text}
                           </p>
                         </div>

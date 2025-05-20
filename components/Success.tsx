@@ -53,7 +53,7 @@ export const Success = (): React.ReactElement => {
             <div className="flex items-center gap-10 w-full justify-center">
               <img className="w-[52px] h-[60px]" alt="Star" src="/star-1.svg" />
 
-              <h2 className="text-4xl sm:text-5xl lg:text-[64px] leading-tight text-center">
+              <h2 className="text-3xl sm:text-4xl lg:text-[64px] leading-tight text-center">
                 <span className={outfit.className}>Behind Our </span>
                 <span className={`${playfair.className} italic`}>Success</span>
               </h2>
@@ -61,12 +61,12 @@ export const Success = (): React.ReactElement => {
               <img className="w-[52px] h-[60px]" alt="Star" src="/star-1.svg" />
             </div>
 
-            <p className={`text-lg text-black/60 text-center max-w-[515px] ${outfit.className}`}>
+            <p className={`text-base sm:text-lg lg:text-xl text-black/60 text-center max-w-[515px] ${outfit.className}`}>
               Introducing the driving force behind our success – our incredible team members
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
@@ -76,24 +76,24 @@ export const Success = (): React.ReactElement => {
                 viewport={{ once: true }}
               >
                 <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 flex items-center gap-6">
+                  <CardContent className="p-4 sm:p-6 flex items-center gap-4 sm:gap-6">
                     <div
-                      className="w-[140px] h-[140px] rounded-full bg-cover bg-center"
+                      className="w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] rounded-full bg-cover bg-center flex-shrink-0"
                       style={{ backgroundImage: `url(${member.image})` }}
                     />
 
-                    <div className="flex flex-col gap-3">
-                      <h3 className={`text-2xl font-medium text-orange ${outfit.className}`}>
+                    <div className="flex flex-col gap-2 sm:gap-3 min-w-0">
+                      <h3 className={`text-xl sm:text-2xl font-medium text-orange truncate ${outfit.className}`}>
                         {member.name}
                       </h3>
 
-                      <p className={`text-lg text-gray-600 ${outfit.className}`}>
+                      <p className={`text-base sm:text-lg text-gray-600 truncate ${outfit.className}`}>
                         {member.role}
                       </p>
 
-                      <div className="flex gap-3 mt-3">
-                        <TwitterIcon className="w-6 h-6 text-gray-600 hover:text-orange transition-colors cursor-pointer" />
-                        <LinkedinIcon className="w-6 h-6 text-gray-600 hover:text-orange transition-colors cursor-pointer" />
+                      <div className="flex gap-3 mt-1 sm:mt-3">
+                        <TwitterIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-orange transition-colors cursor-pointer" />
+                        <LinkedinIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 hover:text-orange transition-colors cursor-pointer" />
                       </div>
                     </div>
                   </CardContent>
@@ -111,7 +111,7 @@ export const Success = (): React.ReactElement => {
           >
             <Button
               variant="outline"
-              className={`border-orange text-orange rounded-full px-8 py-3 hover:bg-orange/10 transition-colors duration-300 ${outfit.className}`}
+              className={`border-orange text-orange rounded-full px-8 py-3 hover:bg-orange/10 transition-colors duration-300 text-base sm:text-lg font-medium ${outfit.className}`}
             >
               View all
             </Button>

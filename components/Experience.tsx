@@ -88,14 +88,14 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
   return (
     <motion.div 
       ref={ref}
-      className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4"
+      className="flex flex-col items-center justify-center text-center gap-4 sm:gap-5 md:gap-6 px-4 sm:px-6"
       variants={countUpAnimation}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.p 
-        className={`text-xs sm:text-sm md:text-base text-black/60 ${outfit.className}`}
+        className={`text-base sm:text-lg md:text-xl text-black/60 font-medium ${outfit.className}`}
         variants={{
           hidden: { opacity: 0, y: 10 },
           visible: { 
@@ -108,7 +108,7 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
         {label}
       </motion.p>
       <motion.p 
-        className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${outfit.className}`}
+        className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black tracking-tight ${outfit.className}`}
         variants={{
           hidden: { opacity: 0, y: 10 },
           visible: { 
@@ -134,18 +134,19 @@ export function Experience() {
   ];
 
   return (
-    <section className="w-full bg-[#fff8f2] py-8 sm:py-12 lg:py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-[#fff8f2] py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeIn}
+          className="flex flex-col"
         >
-          <Separator className="w-full bg-black/10" />
+          <Separator className="w-full bg-black/10 mb-8 sm:mb-10 lg:mb-12" />
 
           <motion.div 
-            className="my-6 sm:my-8 lg:my-12 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12"
+            className="grid grid-cols-2 gap-y-8 sm:gap-y-10 md:gap-y-12 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-12"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -159,7 +160,9 @@ export function Experience() {
           >
             {statistics.map((stat, index) => (
               <React.Fragment key={stat.label}>
-                <AnimatedStat {...stat} />
+                <div className="flex items-center justify-center">
+                  <AnimatedStat {...stat} />
+                </div>
 
                 {index < statistics.length - 1 && (
                   <motion.div
@@ -171,11 +174,11 @@ export function Experience() {
                         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
                       }
                     }}
-                    className="hidden md:block"
+                    className="hidden md:flex items-center justify-center"
                   >
                     <Separator
                       orientation="vertical"
-                      className="h-12 sm:h-16 lg:h-20 mx-0 sm:mx-4 lg:mx-6 bg-black/10"
+                      className="h-20 sm:h-24 lg:h-28 bg-black/10"
                     />
                   </motion.div>
                 )}
@@ -183,7 +186,7 @@ export function Experience() {
             ))}
           </motion.div>
 
-          <Separator className="w-full bg-black/10" />
+          <Separator className="w-full bg-black/10 mt-8 sm:mt-10 lg:mt-12" />
         </motion.div>
       </div>
     </section>

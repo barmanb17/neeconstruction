@@ -78,7 +78,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
         <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-8 sm:py-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -105,14 +105,14 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                 </span>
               </div>
 
-              <p className={`text-xs sm:text-sm text-gray-400 ${outfit.className}`}>
+              <p className={`text-base sm:text-lg text-gray-400 ${outfit.className}`}>
                 Premium construction services for residential, commercial, and industrial projects. Excellence in every detail, from foundation to finish.
               </p>
             </motion.div>
 
             {/* Company links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-xs sm:text-sm ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
                 COMPANY
               </h3>
 
@@ -122,7 +122,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-xs sm:text-sm text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-base sm:text-lg text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
                   >
                     {link.label}
                   </motion.a>
@@ -132,7 +132,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
             {/* Support links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-xs sm:text-sm ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
                 SUPPORT
               </h3>
 
@@ -142,7 +142,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-xs sm:text-sm text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-base sm:text-lg text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
                   >
                     {link.label}
                   </motion.a>
@@ -152,7 +152,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
             {/* Social links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-xs sm:text-sm ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
                 SOCIAL
               </h3>
 
@@ -165,7 +165,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                     aria-label={link.label}
                     className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
-                    {React.cloneElement(link.icon, { className: "w-5 h-5 sm:w-6 sm:h-6" })}
+                    {React.cloneElement(link.icon, { className: "w-6 h-6 sm:w-7 sm:h-7" })}
                   </motion.a>
                 ))}
               </div>
@@ -174,12 +174,12 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
           <Separator className="bg-gray-800 my-4 sm:my-6" />
 
-          <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-3 text-xs sm:text-sm">
-            <p className={`text-gray-500 ${outfit.className}`}>
+          <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-3">
+            <p className={`text-base sm:text-lg text-gray-500 ${outfit.className}`}>
               © NEE Constructions. All Rights Reserved.
             </p>
 
-            <p className={`text-gray-500 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg text-gray-500 ${outfit.className}`}>
               Privacy Policy • Terms and condition
             </p>
           </div>
