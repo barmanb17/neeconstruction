@@ -81,49 +81,49 @@ const contactInfo = [
 export const Address = (): JSX.Element => {
   return (
     <section className="relative w-full bg-gradient-to-b from-orange-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mt-5 sm:px-8 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         {/* Header Section */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="flex flex-col gap-6 items-center mb-20"
+          className="flex flex-col gap-4 sm:gap-6 items-center mb-12 sm:mb-16 lg:mb-20"
         >
           <Badge
             variant="outline"
-            className="pl-1.5 pr-[18px] py-2 bg-white rounded-full flex items-center backdrop-blur-[30px] border-orange-200"
+            className="pl-1.5 pr-4 sm:pr-[18px] py-1.5 sm:py-2 bg-white rounded-full flex items-center backdrop-blur-[30px] border-orange-200"
           >
-            <div className="relative w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center mr-2">
-              <StarIcon className="w-[17px] h-[17px] text-orange-500" />
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 bg-orange-50 rounded-full flex items-center justify-center mr-2">
+              <StarIcon className="w-4 h-4 sm:w-[17px] sm:h-[17px] text-orange-500" />
             </div>
-            <span className={`text-gray-900 font-medium ${outfit.className}`}>
+            <span className={`text-sm sm:text-base text-gray-900 font-medium ${outfit.className}`}>
               Our Offices
             </span>
           </Badge>
 
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-col gap-3 sm:gap-4 items-center">
             <h1 className="text-center">
-              <span className={`text-4xl sm:text-5xl lg:text-6xl text-gray-900 font-medium ${outfit.className}`}>
+              <span className={`text-3xl sm:text-4xl lg:text-6xl text-gray-900 font-medium ${outfit.className}`}>
                 Come and 
               </span>
-              <span className={`text-4xl sm:text-5xl lg:text-6xl text-orange-500 italic ml-2 ${playfair.className}`}>
+              <span className={`text-3xl sm:text-4xl lg:text-6xl text-orange-500 italic ml-1 sm:ml-2 ${playfair.className}`}>
                 Visit us!
               </span>
             </h1>
-            <p className={`text-base sm:text-lg text-gray-600 text-center max-w-2xl ${outfit.className}`}>
+            <p className={`text-sm sm:text-base lg:text-lg text-gray-600 text-center max-w-2xl px-4 sm:px-0 ${outfit.className}`}>
               Reach out anytime! Whether it&apos;s a question, a suggestion, or
               just to say hi, we&apos;re always here to help
             </p>
           </div>
 
           {/* Contact Info Cards */}
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mt-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full max-w-2xl mt-6 sm:mt-8"
           >
             {contactInfo.map((info) => (
               <motion.a
@@ -136,15 +136,15 @@ export const Address = (): JSX.Element => {
                 className="group"
               >
                 <Card className="bg-white border-orange-100 hover:border-orange-200 transition-colors">
-                  <CardContent className="flex items-center gap-4 p-6">
-                    <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-orange-500 group-hover:bg-orange-100 transition-colors">
-                      {info.icon}
+                  <CardContent className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-orange-50 flex items-center justify-center mr-2 text-orange-500 group-hover:bg-orange-100 transition-colors">
+                      {React.cloneElement(info.icon, { className: "w-4 h-4 sm:w-5 sm:h-5" })}
                     </div>
                     <div className="flex flex-col">
-                      <span className={`text-sm text-gray-500 ${outfit.className}`}>
+                      <span className={`text-xs sm:text-sm text-gray-500 ${outfit.className}`}>
                         {info.title}
                       </span>
-                      <span className={`text-base font-medium text-gray-900 ${outfit.className}`}>
+                      <span className={`text-sm sm:text-base font-medium text-gray-900 ${outfit.className}`}>
                         {info.value}
                       </span>
                     </div>
@@ -156,9 +156,9 @@ export const Address = (): JSX.Element => {
         </motion.div>
 
         {/* Map Section */}
-        <div className="relative w-full">
+        <div className="relative">
           {/* Vector/Map Background */}
-          <div className="relative w-full aspect-[16/9] max-h-[581px] mx-auto">
+          <div className="relative w-full aspect-[16/9] max-h-[400px] sm:max-h-[500px] lg:max-h-[581px] mx-auto">
             <Image
               src="/vector-13.svg"
               alt="World Map"
@@ -184,10 +184,10 @@ export const Address = (): JSX.Element => {
                     zIndex: 10 
                   }}
                 >
-                  <Card className="w-[320px] lg:w-[340px] bg-gray-900 rounded-[32px] hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <Card className="bg-gray-900/95 backdrop-blur-sm border-none rounded-[32px] hover:shadow-xl transition-all duration-300">
                     <CardContent className="p-4 lg:p-6">
-                      <div className="flex gap-4 items-start w-full">
-                        <div className="relative w-[80px] h-[80px] lg:w-[102px] lg:h-[102px] rounded-[18px] overflow-hidden flex-shrink-0">
+                      <div className="flex gap-3 sm:gap-4 items-start w-full">
+                        <div className="relative w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] lg:w-[102px] lg:h-[102px] rounded-[18px] overflow-hidden flex-shrink-0">
                           <Image
                             src={location.imageUrl}
                             alt={location.name}
@@ -196,27 +196,27 @@ export const Address = (): JSX.Element => {
                           />
                         </div>
 
-                        <div className="flex flex-col gap-3">
-                          <h2 className={`font-medium text-white text-xl lg:text-2xl ${outfit.className}`}>
+                        <div className="flex flex-col gap-2 sm:gap-3">
+                          <h2 className={`font-medium text-white text-lg sm:text-xl lg:text-2xl ${outfit.className}`}>
                             {location.name}
                           </h2>
 
-                          <div className="space-y-1">
-                            <p className={`text-gray-300 text-sm ${outfit.className}`}>
+                          <div className="space-y-0.5 sm:space-y-1">
+                            <p className={`text-gray-300 text-xs sm:text-sm ${outfit.className}`}>
                               {location.address}
                             </p>
-                            <p className={`text-gray-400 text-sm ${outfit.className}`}>
+                            <p className={`text-gray-400 text-xs sm:text-sm ${outfit.className}`}>
                               {location.fullAddress}
                             </p>
-                            <p className={`text-orange-400 text-sm ${outfit.className}`}>
+                            <p className={`text-orange-400 text-xs sm:text-sm ${outfit.className}`}>
                               {location.phone}
                             </p>
                           </div>
                         </div>
                       </div>
 
-                      <div className="relative w-[51px] mx-auto">
-                        <div className="absolute w-9 h-9 top-[7px] left-[7px] bg-gray-900 rounded-[10px] rotate-[46.93deg]" />
+                      <div className="relative w-[40px] sm:w-[51px] mx-auto mt-2 sm:mt-3">
+                        <div className="absolute w-7 h-7 sm:w-9 sm:h-9 top-[5px] sm:top-[7px] left-[5px] sm:left-[7px] bg-gray-900 rounded-[10px] rotate-[46.93deg]" />
                       </div>
                     </CardContent>
                   </Card>
@@ -225,8 +225,8 @@ export const Address = (): JSX.Element => {
             </div>
           </div>
 
-          {/* Mobile View - Stacked Cards */}
-          <div className="md:hidden mt-8 space-y-4">
+          {/* Location Cards - Mobile */}
+          <div className="md:hidden mt-6 sm:mt-8 space-y-4">
             {locations.map((location) => (
               <motion.div
                 key={location.id}
@@ -235,10 +235,10 @@ export const Address = (): JSX.Element => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <Card className="w-full bg-gray-900 rounded-[32px] hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex gap-4 items-start">
-                      <div className="relative w-[80px] h-[80px] rounded-[18px] overflow-hidden flex-shrink-0">
+                <Card className="w-full bg-gray-900/95 backdrop-blur-sm rounded-[24px] sm:rounded-[32px] hover:shadow-xl transition-all duration-300">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex gap-3 sm:gap-4 items-start">
+                      <div className="relative w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] rounded-[18px] overflow-hidden flex-shrink-0">
                         <Image
                           src={location.imageUrl}
                           alt={location.name}
@@ -248,18 +248,18 @@ export const Address = (): JSX.Element => {
                       </div>
 
                       <div className="flex flex-col gap-2">
-                        <h2 className={`font-medium text-white text-xl ${outfit.className}`}>
+                        <h2 className={`font-medium text-white text-lg sm:text-xl ${outfit.className}`}>
                           {location.name}
                         </h2>
 
-                        <div className="space-y-1">
-                          <p className={`text-gray-300 text-sm ${outfit.className}`}>
+                        <div className="space-y-0.5">
+                          <p className={`text-gray-300 text-xs sm:text-sm ${outfit.className}`}>
                             {location.address}
                           </p>
-                          <p className={`text-gray-400 text-sm ${outfit.className}`}>
+                          <p className={`text-gray-400 text-xs sm:text-sm ${outfit.className}`}>
                             {location.fullAddress}
                           </p>
-                          <p className={`text-orange-400 text-sm ${outfit.className}`}>
+                          <p className={`text-orange-400 text-xs sm:text-sm ${outfit.className}`}>
                             {location.phone}
                           </p>
                         </div>

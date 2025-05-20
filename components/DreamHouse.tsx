@@ -42,28 +42,28 @@ const steps = [
 
 export const DreamHouse = (): JSX.Element => {
   return (
-    <section className="w-full min-h-[673px] bg-orage-light-bg overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+    <section className="w-full min-h-[500px] sm:min-h-[600px] lg:min-h-[673px] bg-orage-light-bg overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="flex flex-col w-full lg:w-[498px] items-start gap-10"
+          className="flex flex-col w-full lg:w-[498px] items-start gap-6 sm:gap-8 lg:gap-10"
         >
-          <div className="flex flex-col items-start justify-center gap-4 relative w-full">
-            <h1 className="text-4xl sm:text-5xl lg:text-[60px] leading-tight">
+          <div className="flex flex-col items-start justify-center gap-3 sm:gap-4 relative w-full">
+            <h1 className="text-3xl sm:text-4xl lg:text-[60px] leading-tight">
               <span className={outfit.className}>Your dream </span>
               <span className={`${playfair.className} italic`}>house</span>
             </h1>
 
-            <p className={`text-lg text-black/60 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg text-black/60 ${outfit.className}`}>
               Discover your dream house, a perfect blend of comfort and
               elegance, where every detail is designed for your vision
             </p>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 sm:gap-6">
             {steps.map((step, index) => (
               <motion.div 
                 key={step.id}
@@ -71,21 +71,21 @@ export const DreamHouse = (): JSX.Element => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-4"
+                className="flex items-center gap-3 sm:gap-4"
               >
-                <div className="relative flex w-12 h-12 items-center justify-center">
+                <div className="relative flex w-10 h-10 sm:w-12 sm:h-12 items-center justify-center">
                   <Image
                     src="/star-2.svg"
                     alt="Star"
-                    width={47}
-                    height={46}
-                    className="absolute"
+                    width={40}
+                    height={40}
+                    className="absolute w-[40px] h-[40px] sm:w-[47px] sm:h-[46px]"
                   />
                   <div className="relative z-10 text-orange">
                     {step.icon}
                   </div>
                 </div>
-                <span className={`text-lg text-black ${outfit.className}`}>
+                <span className={`text-base sm:text-lg text-black ${outfit.className}`}>
                   {step.title}
                 </span>
               </motion.div>
@@ -100,7 +100,7 @@ export const DreamHouse = (): JSX.Element => {
             <Link href="/contact">
               <Button
                 variant="outline"
-                className={`h-12 px-8 py-3 rounded-full border-orange text-orange hover:bg-orange/10 transition-colors duration-300 ${outfit.className}`}
+                className={`h-10 sm:h-12 px-6 sm:px-8 py-2 sm:py-3 rounded-full border-orange text-orange hover:bg-orange/10 transition-colors duration-300 text-sm sm:text-base ${outfit.className}`}
               >
                 Get started
               </Button>
@@ -113,15 +113,16 @@ export const DreamHouse = (): JSX.Element => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full lg:w-[582px] h-[433px]"
+          className="relative w-full lg:w-[582px] h-[300px] sm:h-[350px] lg:h-[433px]"
         >
           <Card className="w-full h-full overflow-hidden border-none rounded-xl">
             <Image
-              src="/picture-6.png"
+              src="/ghor-1.png"
               alt="Dream House"
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </Card>
         </motion.div>
@@ -130,17 +131,17 @@ export const DreamHouse = (): JSX.Element => {
       <Image
         src="/vector-787.svg"
         alt="Vector"
-        width={34}
-        height={44}
-        className="absolute top-[267px] left-[-13px]"
+        width={24}
+        height={32}
+        className="absolute top-[200px] sm:top-[267px] left-[-10px] sm:left-[-13px] w-[24px] h-[32px] sm:w-[34px] sm:h-[44px]"
       />
 
       <Image
         src="/vector-792.svg"
         alt="Vector"
-        width={41}
-        height={30}
-        className="absolute top-[594px] right-0"
+        width={30}
+        height={22}
+        className="absolute top-[400px] sm:top-[594px] right-0 w-[30px] h-[22px] sm:w-[41px] sm:h-[30px]"
       />
     </section>
   );

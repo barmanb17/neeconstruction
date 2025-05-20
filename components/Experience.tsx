@@ -88,14 +88,14 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
   return (
     <motion.div 
       ref={ref}
-      className="flex flex-col items-center sm:items-start gap-3 sm:gap-4"
+      className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4"
       variants={countUpAnimation}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
       <motion.p 
-        className={`text-sm sm:text-base text-black/60 ${outfit.className}`}
+        className={`text-xs sm:text-sm md:text-base text-black/60 ${outfit.className}`}
         variants={{
           hidden: { opacity: 0, y: 10 },
           visible: { 
@@ -108,7 +108,7 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
         {label}
       </motion.p>
       <motion.p 
-        className={`text-2xl sm:text-3xl lg:text-4xl font-semibold text-black ${outfit.className}`}
+        className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-black ${outfit.className}`}
         variants={{
           hidden: { opacity: 0, y: 10 },
           visible: { 
@@ -134,8 +134,8 @@ export function Experience() {
   ];
 
   return (
-    <section className="w-full bg-[#fff8f2] py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
+    <section className="w-full bg-[#fff8f2] py-8 sm:py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -145,7 +145,7 @@ export function Experience() {
           <Separator className="w-full bg-black/10" />
 
           <motion.div 
-            className="my-8 sm:my-12 lg:my-16 grid grid-cols-2 gap-8 sm:flex sm:justify-center sm:items-center sm:gap-12 lg:gap-16"
+            className="my-6 sm:my-8 lg:my-12 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -171,10 +171,11 @@ export function Experience() {
                         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
                       }
                     }}
+                    className="hidden md:block"
                   >
                     <Separator
                       orientation="vertical"
-                      className="hidden sm:block h-16 lg:h-20 mx-0 sm:mx-6 lg:mx-8 bg-black/10"
+                      className="h-12 sm:h-16 lg:h-20 mx-0 sm:mx-4 lg:mx-6 bg-black/10"
                     />
                   </motion.div>
                 )}

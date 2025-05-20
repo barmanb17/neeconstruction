@@ -138,14 +138,14 @@ export function Offer() {
   ];
 
   return (
-    <section className="w-full bg-white py-20">
+    <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
       <style jsx>{slideAnimationStyles}</style>
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20 lg:justify-between">
           {/* Left Column */}
-          <div className="flex flex-col w-full lg:w-[505px] gap-10">
-            <div className="flex items-center gap-6">
-              <h2 className="flex items-center gap-2 text-3xl sm:text-4xl lg:text-[60px] lg:leading-tight">
+          <div className="flex flex-col w-full lg:w-[505px] gap-6 sm:gap-8 lg:gap-10">
+            <div className="flex items-center gap-4 sm:gap-6">
+              <h2 className="flex items-center gap-2 text-2xl sm:text-3xl lg:text-5xl xl:text-[60px] lg:leading-tight">
                 <span className={`font-normal ${outfit.className}`}>
                   What we{" "}
                 </span>
@@ -158,7 +158,7 @@ export function Offer() {
                 alt="Star" 
                 width={52} 
                 height={60}
-                className="w-[32px] h-[36px] sm:w-[42px] sm:h-[48px] lg:w-[52px] lg:h-[60px]"
+                className="w-[24px] h-[28px] sm:w-[32px] sm:h-[36px] lg:w-[42px] lg:h-[48px] xl:w-[52px] xl:h-[60px]"
               />
             </div>
 
@@ -174,30 +174,30 @@ export function Offer() {
                   value={item.id}
                   className="border-b border-solid border-black/10"
                 >
-                  <AccordionTrigger className="py-4 hover:no-underline accordion-trigger">
-                    <div className="flex items-center gap-4 w-full">
-                      <div className="relative flex w-12 h-12 items-center justify-center icon-wrapper">
+                  <AccordionTrigger className="py-3 sm:py-4 hover:no-underline accordion-trigger">
+                    <div className="flex items-center gap-3 sm:gap-4 w-full">
+                      <div className="relative flex w-10 h-10 sm:w-12 sm:h-12 items-center justify-center icon-wrapper">
                         <div className="icon-background" />
                         <Image
                           src="/star-2.svg"
                           alt="Star background"
                           width={47}
                           height={46}
-                          className="absolute w-[47px] h-[46px] top-px left-px z-0"
+                          className="absolute w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] lg:w-[47px] lg:h-[46px] top-px left-px z-0"
                         />
                         <div className="relative z-1">
-                          {item.icon}
+                          {React.cloneElement(item.icon, { className: "w-3.5 h-3.5 sm:w-4 sm:h-4" })}
                         </div>
                       </div>
                       <span
-                        className={`text-left text-base font-semibold title ${outfit.className}`}
+                        className={`text-left text-sm sm:text-base font-semibold title ${outfit.className}`}
                       >
                         {item.title}
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="pl-16 pr-6 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp transition-all">
-                    <p className={`text-black/60 ${outfit.className}`}>
+                  <AccordionContent className="pl-14 sm:pl-16 pr-4 sm:pr-6 data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp transition-all">
+                    <p className={`text-sm sm:text-base text-black/60 ${outfit.className}`}>
                       {item.content}
                     </p>
                   </AccordionContent>
@@ -208,7 +208,7 @@ export function Offer() {
             <Link href="/contact">
               <Button
                 variant="outline"
-                className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
+                className={`rounded-full border-[#e3572b] px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
               >
                 Get started
               </Button>
@@ -216,14 +216,14 @@ export function Offer() {
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative w-full lg:w-[664px] h-[428px] mt-8 lg:mt-0">
-            <div className="relative w-full h-[379px]">
+          <div className="relative w-full lg:w-[664px] h-[300px] sm:h-[350px] lg:h-[428px] mt-6 sm:mt-8 lg:mt-0">
+            <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[379px]">
               <Image
                 src="/ghor-1.png"
                 alt="Architectural floor plan"
                 fill
-                className="object-cover rounded-2xl"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 664px"
+                className="object-cover rounded-xl sm:rounded-2xl"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 664px"
                 priority
               />
             </div>
@@ -233,9 +233,9 @@ export function Offer() {
                 alt="Measurement line"
                 width={388}
                 height={68}
-                className="absolute left-0.5"
+                className="absolute left-0.5 w-[280px] sm:w-[320px] lg:w-[388px]"
               />
-              <div className={`absolute left-[140px] rotate-[10deg] font-normal text-lg ${outfit.className}`}>
+              <div className={`absolute left-[100px] sm:left-[120px] lg:left-[140px] rotate-[10deg] font-normal text-base sm:text-lg ${outfit.className}`}>
                 25m
               </div>
               <Image
@@ -243,9 +243,9 @@ export function Offer() {
                 alt="Measurement line"
                 width={255}
                 height={71}
-                className="absolute right-0"
+                className="absolute right-0 w-[180px] sm:w-[220px] lg:w-[255px]"
               />
-              <div className={`absolute right-[129px] rotate-[-15deg] font-normal text-lg ${outfit.className}`}>
+              <div className={`absolute right-[90px] sm:right-[110px] lg:right-[129px] rotate-[-15deg] font-normal text-base sm:text-lg ${outfit.className}`}>
                 16m
               </div>
             </div>

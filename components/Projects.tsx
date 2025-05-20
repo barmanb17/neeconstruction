@@ -314,32 +314,32 @@ export function Projects() {
   );
 
   return (
-    <section className="w-full bg-[#fff4ea] py-20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
+    <section className="w-full bg-[#fff4ea] py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header section */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="mb-16 flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+          className="mb-8 sm:mb-12 lg:mb-16 flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between"
         >
           <motion.div 
             variants={fadeInUp}
-            className="flex items-center px-4 sm:px-0"
+            className="flex items-center"
           >
-            <h2 className="flex items-center gap-4">
-              <span className={`text-4xl sm:text-5xl lg:text-[64px] tracking-tight ${outfit.className}`}>
+            <h2 className="flex items-center gap-2 sm:gap-4">
+              <span className={`text-3xl sm:text-4xl lg:text-[64px] tracking-tight ${outfit.className}`}>
                 Latest
               </span>
-              <span className={`italic text-4xl sm:text-5xl lg:text-[64px] ${playfair.className}`}>
+              <span className={`italic text-3xl sm:text-4xl lg:text-[64px] ${playfair.className}`}>
                 Project
               </span>
               <motion.img
                 initial={{ rotate: -20, scale: 0.8 }}
                 animate={{ rotate: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                className="ml-2 h-[40px] w-[34px] sm:h-[60px] sm:w-[52px]"
+                className="ml-1 sm:ml-2 h-[32px] w-[28px] sm:h-[40px] sm:w-[34px] lg:h-[60px] lg:w-[52px]"
                 alt="Star"
                 src="/star-1.svg"
               />
@@ -347,7 +347,7 @@ export function Projects() {
           </motion.div>
           <motion.p 
             variants={fadeInUp}
-            className={`max-w-xl text-base text-black/60 lg:text-lg px-4 sm:px-0 ${outfit.className}`}
+            className={`max-w-xl text-sm sm:text-base lg:text-lg text-black/60 ${outfit.className}`}
           >
             We offer the latest property listings with detailed insights,
             virtual tours, and personalized assistance, ensuring a seamless and
@@ -361,7 +361,7 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="mb-12 flex flex-wrap items-center gap-3 px-4 sm:px-0"
+          className="mb-8 sm:mb-12 flex flex-wrap items-center gap-2 sm:gap-3"
         >
           {categories.map((category, index) => (
             <motion.div
@@ -372,7 +372,7 @@ export function Projects() {
               <Button
                 variant={selectedCategory === category.name ? "default" : "outline"}
                 onClick={() => handleCategoryClick(category.name)}
-                className={`rounded-full px-6 py-3 text-base font-medium transition-colors ${outfit.className} ${
+                className={`rounded-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium transition-colors ${outfit.className} ${
                   selectedCategory === category.name
                     ? "bg-[#e3572b] text-white hover:bg-[#d14d24]"
                     : "text-black hover:bg-black/5"
@@ -390,7 +390,7 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="mb-16 grid grid-cols-1 gap-8 px-4 sm:px-0 sm:grid-cols-2 lg:grid-cols-3"
+          className="mb-12 sm:mb-16 grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
           {filteredProperties.map((property, index) => (
             <motion.div
@@ -401,51 +401,51 @@ export function Projects() {
               animate="visible"
               exit="hidden"
             >
-              <Card className="border-none bg-transparent shadow-none transition-transform hover:-translate-y-1">
-                <CardContent className="flex flex-col gap-6 p-0">
+              <Card className="h-full border-none bg-transparent shadow-none transition-transform hover:-translate-y-1">
+                <CardContent className="flex flex-col gap-4 sm:gap-6 p-0">
                   {/* Property image */}
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative h-[280px] w-full overflow-hidden rounded-xl"
+                    className="relative h-[240px] sm:h-[280px] w-full overflow-hidden rounded-xl"
                   >
                     <Image
                       src={property.image}
                       alt={property.name}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </motion.div>
 
                   {/* Property details */}
-                  <div className="flex flex-col gap-2">
-                    <h3 className={`text-lg font-semibold text-black lg:text-xl ${outfit.className}`}>
+                  <div className="flex flex-col gap-1 sm:gap-2">
+                    <h3 className={`text-base sm:text-lg lg:text-xl font-semibold text-black ${outfit.className}`}>
                       {property.name}
                     </h3>
-                    <p className={`text-base text-black/60 ${outfit.className}`}>
+                    <p className={`text-sm sm:text-base text-black/60 ${outfit.className}`}>
                       {property.location}
                     </p>
                   </div>
 
                   {/* Price and details link */}
                   <div className="flex items-center justify-between">
-                    <span className={`text-xl font-semibold text-[#e3572b] lg:text-3xl ${outfit.className}`}>
+                    <span className={`text-lg sm:text-xl lg:text-3xl font-semibold text-[#e3572b] ${outfit.className}`}>
                       {property.price}
                     </span>
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       onClick={() => handlePropertyClick(property)}
-                      className={`group flex items-center gap-2 ${outfit.className}`}
+                      className={`group flex items-center gap-1 sm:gap-2 ${outfit.className}`}
                     >
-                      <span className="text-base font-medium text-black transition-colors group-hover:text-[#e3572b]">
+                      <span className="text-sm sm:text-base font-medium text-black transition-colors group-hover:text-[#e3572b]">
                         Details
                       </span>
                       <motion.div
                         whileHover={{ x: 3, y: -3 }}
                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
                       >
-                        <ArrowUpRightIcon className="h-5 w-5" />
+                        <ArrowUpRightIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                       </motion.div>
                     </motion.button>
                   </div>
@@ -460,9 +460,9 @@ export function Projects() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center py-12"
+            className="text-center py-8 sm:py-12"
           >
-            <p className={`text-lg text-black/60 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg text-black/60 ${outfit.className}`}>
               No properties found in this category.
             </p>
           </motion.div>
@@ -474,7 +474,7 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="flex justify-center px-4 sm:px-0"
+          className="flex justify-center"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -483,7 +483,7 @@ export function Projects() {
             <Link href="/projects">
               <Button
                 variant="outline"
-                className={`rounded-full border-[#e3572b] px-8 py-3 text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
+                className={`rounded-full border-[#e3572b] px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-medium text-[#e3572b] transition-colors hover:bg-[#e3572b] hover:text-white ${outfit.className}`}
               >
                 View all projects
               </Button>
@@ -498,7 +498,7 @@ export function Projects() {
             onClose={handleCloseModal}
             property={{
               ...selectedProperty,
-              agent: "Default Agent" // Adding required agent property
+              agent: "Default Agent"
             }}
           />
         )}
