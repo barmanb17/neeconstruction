@@ -197,18 +197,18 @@ export const Address = (): JSX.Element => {
                         </div>
 
                         <div className="flex flex-col gap-2 sm:gap-3">
-                          <h2 className={`font-medium text-white text-xl sm:text-2xl lg:text-3xl ${outfit.className}`}>
+                          <h2 className={`font-medium text-white text-md sm:text-xl lg:text-2xl ${outfit.className}`}>
                             {location.name}
                           </h2>
 
-                          <div className="space-y-1 sm:space-y-1.5">
-                            <p className={`text-gray-300 text-base sm:text-lg ${outfit.className}`}>
+                          <div className=" ">
+                            <p className={`text-gray-300 text-base sm:text-md ${outfit.className}`}>
                               {location.address}
                             </p>
-                            <p className={`text-gray-400 text-base sm:text-lg ${outfit.className}`}>
+                            <p className={`text-gray-400 text-base sm:text-md ${outfit.className}`}>
                               {location.fullAddress}
                             </p>
-                            <p className={`text-orange-400 text-base sm:text-lg ${outfit.className}`}>
+                            <p className={`text-orange-400 text-base sm:text-md ${outfit.className}`}>
                               {location.phone}
                             </p>
                           </div>

@@ -100,19 +100,19 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                   height={24}
                   className="w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] opacity-90"
                 />
-                <span className={`text-xl sm:text-2xl text-white italic ${playfair.className}`}>
+                <span className={`text-xl sm:text-3xl text-white italic ${playfair.className}`}>
                   Construction
                 </span>
               </div>
 
-              <p className={`text-base sm:text-lg text-gray-400 ${outfit.className}`}>
+              <p className={`text-base sm:text-md text-gray-400`}>
                 Premium construction services for residential, commercial, and industrial projects. Excellence in every detail, from foundation to finish.
               </p>
             </motion.div>
 
             {/* Company links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg `}>
                 COMPANY
               </h3>
 
@@ -122,7 +122,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-base sm:text-lg text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-base sm:text-md text-gray-400 hover:text-orange-400 transition-colors `}
                   >
                     {link.label}
                   </motion.a>
@@ -132,7 +132,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
             {/* Support links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg `}>
                 SUPPORT
               </h3>
 
@@ -142,7 +142,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
                     key={index}
                     href={link.href}
                     whileHover={{ x: 5 }}
-                    className={`text-base sm:text-lg text-gray-400 hover:text-orange-400 transition-colors ${outfit.className}`}
+                    className={`text-base sm:text-md text-gray-400 hover:text-orange-400 transition-colors `}
                   >
                     {link.label}
                   </motion.a>
@@ -152,7 +152,7 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
 
             {/* Social links */}
             <motion.div variants={fadeIn} className="flex flex-col gap-3 sm:gap-4">
-              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg ${outfit.className}`}>
+              <h3 className={`text-gray-200 font-semibold tracking-wider text-base sm:text-lg `}>
                 SOCIAL
               </h3>
 
@@ -175,11 +175,11 @@ export const Footer = ({ isLandingPage = false }: FooterProps): ReactElement => 
           <Separator className="bg-gray-800 my-4 sm:my-6" />
 
           <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-3">
-            <p className={`text-base sm:text-lg text-gray-500 ${outfit.className}`}>
+            <p className={`text-base sm:text-md text-gray-500 `}>
               © NEE Constructions. All Rights Reserved.
             </p>
 
-            <p className={`text-base sm:text-lg text-gray-500 ${outfit.className}`}>
+            <p className={`text-base sm:text-md text-gray-500 `}>
               Privacy Policy • Terms and condition
             </p>
           </div>

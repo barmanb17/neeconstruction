@@ -29,22 +29,23 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-3xl space-y-8"
+              className="max-w-3xl space-y-6"
             >
-              <h1 className="text-white text-5xl sm:text-6xl lg:text-8xl font-bold">
+              <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-bold">
                 Building Excellence
               </h1>
               <h2 className="text-white text-4xl sm:text-5xl lg:text-7xl font-light italic" 
                   style={{ fontFamily: "serif" }}>
                 Crafting Futures
               </h2>
-              <p className="text-white/90 text-lg sm:text-xl max-w-xl">
+              <p className="text-white/90 text-lg sm:text-lg max-w-xl">
                 Premium construction services for residential, commercial, and industrial projects. Excellence in every
                 detail, from foundation to finish.
               </p>
+              
               <Link
                 href="/contact"
-                className="inline-block bg-transparent border border-white/20 rounded-full px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-base sm:text-lg text-white hover:bg-white/20 transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-white/10"
+                className="inline-block bg-transparent border border-white/20 rounded-full px-6 sm:px-8 md:px-8 py-3 sm:py-3 text-base text-white hover:bg-white/20 transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-white/10"
               >
                 Get Started
               </Link>

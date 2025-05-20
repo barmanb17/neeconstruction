@@ -108,7 +108,7 @@ function AnimatedStat({ label, value, prefix }: { label: string; value: string; 
         {label}
       </motion.p>
       <motion.p 
-        className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black tracking-tight ${outfit.className}`}
+        className={`text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-black tracking-tight ${outfit.className}`}
         variants={{
           hidden: { opacity: 0, y: 10 },
           visible: { 
@@ -134,7 +134,7 @@ export function Experience() {
   ];
 
   return (
-    <section className="w-full bg-[#fff8f2] py-12 sm:py-16 lg:py-20">
+    <section className="w-full bg-[#fff8f2] py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-8">
         <motion.div
           initial="hidden"
@@ -146,7 +146,7 @@ export function Experience() {
           <Separator className="w-full bg-black/10 mb-8 sm:mb-10 lg:mb-12" />
 
           <motion.div 
-            className="grid grid-cols-2 gap-y-8 sm:gap-y-10 md:gap-y-12 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-12"
+            className="grid grid-cols-2 lg:flex lg:flex-row justify-center items-center gap-y-8 sm:gap-y-10 md:gap-y-12 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-18"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -174,7 +174,7 @@ export function Experience() {
                         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
                       }
                     }}
-                    className="hidden md:flex items-center justify-center"
+                    className="hidden lg:flex items-center justify-center"
                   >
                     <Separator
                       orientation="vertical"
@@ -186,7 +186,7 @@ export function Experience() {
             ))}
           </motion.div>
 
-          <Separator className="w-full bg-black/10 mt-8 sm:mt-10 lg:mt-12" />
+          <Separator className="w-full bg-black/10 mt-8 sm:mt-10" />
         </motion.div>
       </div>
     </section>

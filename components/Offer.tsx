@@ -145,7 +145,7 @@ export function Offer() {
           {/* Left Column */}
           <div className="flex flex-col w-full lg:w-[505px] gap-8 sm:gap-10 lg:gap-12">
             <div className="flex items-center gap-4 sm:gap-6">
-              <h1 className="flex items-center gap-2 text-3xl sm:text-4xl lg:text-6xl xl:text-[72px] lg:leading-tight">
+              <h1 className="flex items-center gap-2 text-3xl sm:text-4xl lg:text-6xl  lg:leading-tight">
                 <span className={`font-normal ${outfit.className}`}>
                   What we{" "}
                 </span>

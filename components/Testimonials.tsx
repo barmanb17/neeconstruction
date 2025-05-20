@@ -105,7 +105,7 @@ export const Testimonials = (): React.ReactElement => {
               />
             </div>
 
-            <p className={`text-base sm:text-lg lg:text-xl text-gray-600 text-center max-w-[515px] px-4 sm:px-0 ${outfit.className}`}>
+            <p className={`text-base sm:text-lg lg:text-[18px] text-gray-600 text-center max-w-[515px] px-4 sm:px-0 ${outfit.className}`}>
               See how we've turned clients' real estate dreams into reality with
               exceptional service
             </p>
@@ -137,7 +137,7 @@ export const Testimonials = (): React.ReactElement => {
                         </div>
 
                         <div className="flex flex-col">
-                          <h3 className={`text-base sm:text-lg font-medium text-gray-900 ${outfit.className}`}>
+                          <h3 className={`text-base sm:text-md font-medium text-gray-900 ${outfit.className}`}>
                             {testimonial.name}
                           </h3>
                           <p className={`text-sm sm:text-base text-gray-500 ${outfit.className}`}>
@@ -167,10 +167,10 @@ export const Testimonials = (): React.ReactElement => {
 
                     {/* Review Content */}
                     <div className="flex flex-col gap-1 sm:gap-2">
-                      <h4 className={`text-xl sm:text-2xl font-medium text-gray-900 ${outfit.className}`}>
+                      <h4 className={`text-md sm:text-xl font-medium text-gray-900 ${outfit.className}`}>
                         {testimonial.title}
                       </h4>
-                      <p className={`text-base sm:text-lg text-gray-600 line-clamp-3 ${outfit.className}`}>
+                      <p className={`text-base sm:text-md text-gray-600 line-clamp-3 ${outfit.className}`}>
                         {testimonial.text}
                       </p>
                     </div>
